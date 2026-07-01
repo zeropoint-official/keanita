@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { View, Text, Img, LinearGradient, AnimatedPress } from '@/lib/rn';
 import { Fonts } from '@/constants/fonts';
-import { useAuth } from '@/contexts/auth';
 
 const inputStyle: React.CSSProperties = {
   backgroundColor: '#FAFAF7',
@@ -31,7 +30,6 @@ const labelStyle: React.CSSProperties = {
 
 export default function LoginScreen() {
   const router = useRouter();
-  const { signIn } = useAuth();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -45,16 +43,8 @@ export default function LoginScreen() {
     }
     setError(null);
     setLoading(true);
-    const message = await signIn(email, password);
+    await new Promise((resolve) => setTimeout(resolve, 400));
     setLoading(false);
-    if (message) {
-      setError(
-        message.toLowerCase().includes('invalid')
-          ? 'Wrong email or password. Please try again.'
-          : message,
-      );
-      return;
-    }
     router.push('/');
   };
 

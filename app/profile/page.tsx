@@ -5,7 +5,11 @@ import { View, Text, Img, LinearGradient, AnimatedPress } from '@/lib/rn';
 import { Fonts } from '@/constants/fonts';
 import { IconSymbol, type IconSymbolName } from '@/components/ui/icon-symbol';
 import { useRewards } from '@/contexts/rewards';
-import { useAuth } from '@/contexts/auth';
+
+const MOCK_USER = {
+  displayName: 'Maria Papadopoulou',
+  email: 'maria@example.com',
+};
 
 interface MenuItem {
   icon: IconSymbolName;
@@ -28,10 +32,7 @@ const MENU_ITEMS: MenuItem[] = [
 export default function ProfileScreen() {
   const router = useRouter();
   const { balance, streak, lifetimeEarned } = useRewards();
-  const { user, signOut } = useAuth();
-
-  const meta = (user?.user_metadata ?? {}) as { firstname?: string; lastname?: string };
-  const displayName = [meta.firstname, meta.lastname].filter(Boolean).join(' ').trim() || 'Keanita Member';
+  const { displayName, email } = MOCK_USER;
 
   return (
     <View style={{ backgroundColor: '#FAFAF7', minHeight: '100dvh', paddingBottom: 120 }}>
@@ -51,7 +52,7 @@ export default function ProfileScreen() {
           </View>
           <View style={{ marginLeft: 16, flex: 1 }}>
             <Text style={{ ...Fonts.bodyBold, color: '#FFFFFF', fontSize: 18 }}>{displayName}</Text>
-            <Text style={{ ...Fonts.body, color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>{user?.email ?? 'guest@keanita.com'}</Text>
+            <Text style={{ ...Fonts.body, color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>{email}</Text>
           </View>
           <View style={{ backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: 999, paddingLeft: 12, paddingRight: 12, paddingTop: 6, paddingBottom: 6 }}>
             <Text style={{ ...Fonts.bodySemiBold, color: '#FFFFFF', fontSize: 12 }}>Gold Member</Text>
@@ -135,7 +136,7 @@ export default function ProfileScreen() {
 
       {/* Log out */}
       <View style={{ marginLeft: 24, marginRight: 24, marginTop: 20 }}>
-        <AnimatedPress onPress={signOut}>
+        <AnimatedPress onPress={() => router.push('/login')}>
           <View style={{ alignItems: 'center', paddingTop: 14, paddingBottom: 14, backgroundColor: '#FFF0EE', borderRadius: 16 }}>
             <Text style={{ ...Fonts.bodySemiBold, color: '#E84D3D', fontSize: 14 }}>Log Out</Text>
           </View>

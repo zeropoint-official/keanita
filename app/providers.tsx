@@ -1,7 +1,6 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { AuthProvider } from '@/contexts/auth';
 import { RewardsProvider } from '@/contexts/rewards';
 import { CustomTabBar } from '@/components/ui/custom-tab-bar';
 
@@ -12,11 +11,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const showTabBar = TAB_ROUTES.includes(pathname);
 
   return (
-    <AuthProvider>
-      <RewardsProvider>
-        {children}
-        {showTabBar && <CustomTabBar />}
-      </RewardsProvider>
-    </AuthProvider>
+    <RewardsProvider>
+      {children}
+      {showTabBar && <CustomTabBar />}
+    </RewardsProvider>
   );
 }
