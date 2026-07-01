@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  /* Keanita brand palette — mirrors nextjs-sample tailwind.config.js */
+  --color-k-bg: #FAFAF7;
+  --color-k-card: #FFFFFF;
+  --color-k-red: #E84D3D;
+  --color-k-red-light: #FFF0EE;
+  --color-k-red-muted: #F28B7D;
+  --color-k-orange: #F5A623;
+  --color-k-orange-light: #FFF6E8;
+  --color-k-yellow: #FBBF24;
+  --color-k-yellow-light: #FFFBEB;
+  --color-k-green: #6BBF6A;
+  --color-k-green-light: #EEFBEE;
+  --color-k-sky: #5DADE2;
+  --color-k-sky-light: #EDF7FD;
+  --color-k-purple: #9B7FD4;
+  --color-k-purple-light: #F4F0FA;
+  --color-k-text: #2D2D3A;
+  --color-k-text-secondary: #8E8E9A;
+  --color-k-text-muted: #B8B8C4;
+  --color-k-border: #F0F0EC;
+
+  --radius-4xl: 2rem;
+
+  --font-display: var(--font-baloo);
+  --font-body: var(--font-nunito);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #E9E9E4; /* neutral behind the phone frame on desktop */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-nunito), system-ui, sans-serif;
+  color: #2D2D3A;
+}
+
+/* The mobile-only phone frame: centered, capped width, fills a phone screen. */
+.phone-frame {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  position: relative;
+  background: var(--color-k-bg);
+  overflow-x: hidden;
+  box-shadow: 0 0 60px rgba(45, 45, 58, 0.12);
+}
+
+/* Hide scrollbars on horizontal rails, matching the RN hidden indicators. */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
