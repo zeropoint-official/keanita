@@ -33,6 +33,11 @@ const SECONDARY_LINKS: NavLink[] = [
   { label: 'Notifications', icon: 'bell.fill', color: '#5DADE2', bg: '#EDF7FD', href: '/notifications' },
 ];
 
+const MORE_LINKS: NavLink[] = [
+  { label: 'Contact', icon: 'envelope.fill', color: '#6BBF6A', bg: '#EEFBEE', href: '/contact' },
+  { label: 'Terms & Conditions', icon: 'info.circle.fill', color: '#9B7FD4', bg: '#F4F0FA', href: '/terms' },
+];
+
 export function NavDrawer({ visible, onClose }: Props) {
   const router = useRouter();
 
@@ -150,6 +155,15 @@ export function NavDrawer({ visible, onClose }: Props) {
                   Your account
                 </span>
                 {SECONDARY_LINKS.map((link) => (
+                  <DrawerLink key={link.label} link={link} onPress={() => go(link.href)} />
+                ))}
+              </div>
+
+              <div style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 20 }}>
+                <span style={{ ...Fonts.bodyBold, fontSize: 11, color: '#B8B8C4', textTransform: 'uppercase', letterSpacing: 1, paddingLeft: 8, marginBottom: 8, display: 'block' }}>
+                  More
+                </span>
+                {MORE_LINKS.map((link) => (
                   <DrawerLink key={link.label} link={link} onPress={() => go(link.href)} />
                 ))}
               </div>
