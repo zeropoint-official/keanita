@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from 'react';
 import type { Session, User } from '@supabase/supabase-js';
-import { supabase } from '@/lib/supabase';
+import { getSupabase } from '@/lib/supabase';
 
 interface AuthState {
   initializing: boolean;
@@ -26,6 +26,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [initializing, setInitializing] = useState(true);
 
   useEffect(() => {
+    const supabase = getSupabase();
+
     supabase.auth.getSession().then(({ data }) => {
       setSession(data.session);
       setInitializing(false);
@@ -44,14 +46,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       session,
       user: session?.user ?? null,
       signIn: async (email, password) => {
-        const { error } = await supabase.auth.signInWithPassword({
+        const { error } = await getSupabase().auth.signInWithPassword({
           email: email.trim().toLowerCase(),
           password,
         });
         return error ? error.message : null;
       },
       signOut: async () => {
-        await supabase.auth.signOut();
+        await getSupabase().auth.signOut();
       },
     }),
     [initializing, session],
