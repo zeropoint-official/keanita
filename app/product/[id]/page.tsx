@@ -32,7 +32,7 @@ export default function ProductDetailScreen() {
 
   return (
     <View style={{ backgroundColor: '#FAFAF7', minHeight: '100dvh' }}>
-      <View style={{ paddingBottom: 40 }}>
+      <View style={{ paddingBottom: 160 }}>
         {/* Hero */}
         <View style={{ backgroundColor: product.bgColor, borderBottomLeftRadius: 32, borderBottomRightRadius: 32 }}>
           <ScreenHeader title="" transparent />
@@ -138,8 +138,8 @@ export default function ProductDetailScreen() {
         </div>
       </View>
 
-      {/* Bottom CTA */}
-      <View style={{ position: 'sticky', bottom: 0, paddingLeft: 24, paddingRight: 24, paddingTop: 12, paddingBottom: 16, backgroundColor: '#FAFAF7', borderTop: '1px solid #F0F0EC' }}>
+      {/* Bottom CTA — pinned just above the dock */}
+      <View style={{ position: 'fixed', bottom: 76, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: 430, boxSizing: 'border-box', paddingLeft: 24, paddingRight: 24, paddingTop: 12, paddingBottom: 12, backgroundColor: '#FAFAF7', borderTop: '1px solid #F0F0EC', zIndex: 30 }}>
         <PrimaryButton label="Find in stores" icon="mappin.and.ellipse" color={product.accentColor} onPress={() => router.back()} />
       </View>
     </View>

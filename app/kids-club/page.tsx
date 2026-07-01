@@ -24,7 +24,7 @@ export default function KidsClubScreen() {
   const [activeChar, setActiveChar] = useState<Character | null>(null);
 
   return (
-    <View style={{ backgroundColor: '#FAFAF7', minHeight: '100dvh', paddingBottom: 40 }}>
+    <View style={{ backgroundColor: '#FAFAF7', minHeight: '100dvh', paddingBottom: 96 }}>
       <ScreenHeader title="Kids Club" />
 
       {/* Hero banner */}

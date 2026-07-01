@@ -85,7 +85,7 @@ export default function GiftsScreen() {
       </View>
 
       {/* Grid */}
-      <View style={{ paddingLeft: 24, paddingRight: 24, paddingTop: 12, paddingBottom: 40, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+      <View style={{ paddingLeft: 24, paddingRight: 24, paddingTop: 12, paddingBottom: 96, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
         {visible.map((g, i) => (
           <motion.div key={g.id} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05, type: 'spring', stiffness: 120, damping: 16 }}>
             <GiftCard gift={g} onPress={() => setSelected(g)} />

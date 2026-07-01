@@ -61,7 +61,7 @@ export default function ProductsScreen() {
   for (let i = 0; i < filtered.length; i += 2) rows.push(filtered.slice(i, i + 2));
 
   return (
-    <View style={{ backgroundColor: '#FAFAF7', minHeight: '100dvh', paddingBottom: 40 }}>
+    <View style={{ backgroundColor: '#FAFAF7', minHeight: '100dvh', paddingBottom: 96 }}>
       {/* Hero */}
       <LinearGradient colors={['#F5A623', '#FBBF24']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderBottomLeftRadius: 28, borderBottomRightRadius: 28 }}>
         <AppHeader transparent tint="light" title="Products" showBrand={false} />

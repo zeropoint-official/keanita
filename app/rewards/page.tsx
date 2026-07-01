@@ -30,7 +30,7 @@ export default function RewardsScreen() {
   const { balance, streak, lifetimeEarned, history } = useRewards();
 
   return (
-    <View style={{ backgroundColor: '#FAFAF7', minHeight: '100dvh', paddingBottom: 40 }}>
+    <View style={{ backgroundColor: '#FAFAF7', minHeight: '100dvh', paddingBottom: 96 }}>
       {/* Gradient header */}
       <LinearGradient
         colors={['#FBBF24', '#F5A623']}

@@ -53,7 +53,7 @@ export default function EventDetailScreen() {
 
   return (
     <View style={{ backgroundColor: '#FAFAF7', minHeight: '100dvh' }}>
-      <View style={{ paddingBottom: 40 }}>
+      <View style={{ paddingBottom: 160 }}>
         {/* Hero image */}
         <View style={{ height: 280, position: 'relative' }}>
           <Img src={event.image} style={{ width: '100%', height: '100%' }} contentFit="cover" />
@@ -111,8 +111,8 @@ export default function EventDetailScreen() {
         </View>
       </View>
 
-      {/* Bottom CTA */}
-      <View style={{ position: 'sticky', bottom: 0, paddingLeft: 24, paddingRight: 24, paddingTop: 12, paddingBottom: 16, backgroundColor: '#FAFAF7', borderTop: '1px solid #F0F0EC' }}>
+      {/* Bottom CTA — pinned just above the dock */}
+      <View style={{ position: 'fixed', bottom: 76, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: 430, boxSizing: 'border-box', paddingLeft: 24, paddingRight: 24, paddingTop: 12, paddingBottom: 12, backgroundColor: '#FAFAF7', borderTop: '1px solid #F0F0EC', zIndex: 30 }}>
         {rsvped ? (
           <View style={{ borderRadius: 16, paddingTop: 14, paddingBottom: 14, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#EEFBEE' }}>
             <IconSymbol name="checkmark.circle.fill" size={20} color="#6BBF6A" />

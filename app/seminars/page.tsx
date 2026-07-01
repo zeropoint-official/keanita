@@ -35,7 +35,7 @@ export default function SeminarsScreen() {
   ];
 
   return (
-    <View style={{ backgroundColor: '#FAFAF7', minHeight: '100dvh', paddingBottom: 40 }}>
+    <View style={{ backgroundColor: '#FAFAF7', minHeight: '100dvh', paddingBottom: 96 }}>
       {/* Hero */}
       <LinearGradient colors={['#6BBF6A', '#5DADE2']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderBottomLeftRadius: 32, borderBottomRightRadius: 32 }}>
         <AppHeader transparent tint="light" title="Seminars" showBrand={false} />
