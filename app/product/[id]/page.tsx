@@ -17,17 +17,17 @@ export default function ProductDetailScreen() {
   if (!product) {
     return (
       <View style={{ backgroundColor: '#FAFAF7', minHeight: '100dvh' }}>
-        <ScreenHeader title="Product" />
-        <EmptyState emoji="🧃" title="Product not found" />
+        <ScreenHeader title="Προϊόν" />
+        <EmptyState emoji="🧃" title="Το προϊόν δεν βρέθηκε" />
       </View>
     );
   }
 
   const related = products.filter((p) => p.id !== product.id).slice(0, 4);
   const facts = [
-    { emoji: '👶', title: 'Made for kids', body: 'A wholesome treat designed for ages 1–12.' },
-    { emoji: '🥤', title: 'Just the right size', body: '200ml carton — perfect for lunchboxes.' },
-    { emoji: '♻️', title: 'Recyclable pack', body: 'The carton is fully recyclable.' },
+    { emoji: '👶', title: 'Φτιαγμένο για παιδιά', body: 'Μια θρεπτική απόλαυση σχεδιασμένη για ηλικίες 1–12.' },
+    { emoji: '🥤', title: 'Στο σωστό μέγεθος', body: 'Κουτάκι 200ml — ιδανικό για το κολατσιό.' },
+    { emoji: '♻️', title: 'Ανακυκλώσιμη συσκευασία', body: 'Το κουτάκι είναι πλήρως ανακυκλώσιμο.' },
   ];
 
   return (
@@ -44,7 +44,7 @@ export default function ProductDetailScreen() {
         {/* Title */}
         <View style={{ paddingLeft: 24, paddingRight: 24, marginTop: 20 }}>
           <View style={{ alignSelf: 'flex-start', borderRadius: 999, paddingLeft: 12, paddingRight: 12, paddingTop: 4, paddingBottom: 4, backgroundColor: product.accentColor + '22' }}>
-            <Text style={{ ...Fonts.bodyBold, fontSize: 10, textTransform: 'capitalize', color: product.accentColor }}>{product.category}</Text>
+            <Text style={{ ...Fonts.bodyBold, fontSize: 10, color: product.accentColor }}>{product.category === 'juice' ? 'Χυμός' : 'Γιαούρτι'}</Text>
           </View>
           <Text style={{ ...Fonts.displayHeavy, fontSize: 24, color: '#2D2D3A', marginTop: 8 }}>{product.name}</Text>
           <Text style={{ ...Fonts.body, fontSize: 14, color: '#8E8E9A', marginTop: 4, lineHeight: '20px' }}>{product.tagline}</Text>
@@ -66,7 +66,7 @@ export default function ProductDetailScreen() {
         {/* Nutrition Facts */}
         <View style={{ marginLeft: 24, marginRight: 24, marginTop: 28 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-            <Text style={{ ...Fonts.displayMedium, fontSize: 18, color: '#2D2D3A' }}>Nutrition Facts</Text>
+            <Text style={{ ...Fonts.displayMedium, fontSize: 18, color: '#2D2D3A' }}>Διατροφικά στοιχεία</Text>
             <Text style={{ ...Fonts.body, fontSize: 11, color: '#B8B8C4' }}>{product.servingSize}</Text>
           </View>
           <LinearGradient colors={[product.accentColor, product.accentColor + 'CC']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 22, padding: 4 }}>
@@ -79,11 +79,11 @@ export default function ProductDetailScreen() {
               ))}
             </View>
           </LinearGradient>
-          <Text style={{ ...Fonts.body, fontSize: 10, color: '#B8B8C4', marginTop: 8 }}>*NRV: Nutrient Reference Value for an average adult.</Text>
+          <Text style={{ ...Fonts.body, fontSize: 10, color: '#B8B8C4', marginTop: 8 }}>*NRV: Τιμή διατροφικής αναφοράς για έναν μέσο ενήλικα.</Text>
         </View>
 
         {/* Ingredients */}
-        <Text style={{ ...Fonts.displayMedium, fontSize: 18, color: '#2D2D3A', marginLeft: 24, marginRight: 24, marginTop: 28, marginBottom: 12 }}>Ingredients</Text>
+        <Text style={{ ...Fonts.displayMedium, fontSize: 18, color: '#2D2D3A', marginLeft: 24, marginRight: 24, marginTop: 28, marginBottom: 12 }}>Συστατικά</Text>
         <View style={{ marginLeft: 24, marginRight: 24 }}>
           <View style={{ backgroundColor: '#FFFFFF', borderRadius: 16, padding: 16, boxShadow: '0 1px 6px rgba(45,45,58,0.04)' }}>
             {product.ingredients.map((ing, i) => (
@@ -102,14 +102,14 @@ export default function ProductDetailScreen() {
               <Text style={{ fontSize: 22 }}>📷</Text>
             </View>
             <View style={{ marginLeft: 12, flex: 1 }}>
-              <Text style={{ ...Fonts.bodyBold, fontSize: 14, color: '#2D2D3A' }}>Scan &amp; earn 20 KP</Text>
-              <Text style={{ ...Fonts.body, fontSize: 12, color: '#8E8E9A', marginTop: 2 }}>Scan the QR on the pack to collect points.</Text>
+              <Text style={{ ...Fonts.bodyBold, fontSize: 14, color: '#2D2D3A' }}>Σκάναρε &amp; κέρδισε 20 KP</Text>
+              <Text style={{ ...Fonts.body, fontSize: 12, color: '#8E8E9A', marginTop: 2 }}>Σκάναρε το QR στη συσκευασία για να μαζέψεις πόντους.</Text>
             </View>
           </View>
         </View>
 
         {/* Good to know */}
-        <Text style={{ ...Fonts.displayMedium, fontSize: 18, color: '#2D2D3A', marginLeft: 24, marginRight: 24, marginTop: 28, marginBottom: 12 }}>Good to know</Text>
+        <Text style={{ ...Fonts.displayMedium, fontSize: 18, color: '#2D2D3A', marginLeft: 24, marginRight: 24, marginTop: 28, marginBottom: 12 }}>Καλό να ξέρεις</Text>
         <View style={{ marginLeft: 24, marginRight: 24 }}>
           {facts.map((f, i) => (
             <motion.div key={f.title} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.07, type: 'spring', stiffness: 120, damping: 16 }}>
@@ -125,7 +125,7 @@ export default function ProductDetailScreen() {
         </View>
 
         {/* Related */}
-        <Text style={{ ...Fonts.displayMedium, fontSize: 18, color: '#2D2D3A', marginLeft: 24, marginRight: 24, marginTop: 20, marginBottom: 12 }}>More to sip</Text>
+        <Text style={{ ...Fonts.displayMedium, fontSize: 18, color: '#2D2D3A', marginLeft: 24, marginRight: 24, marginTop: 20, marginBottom: 12 }}>Κι άλλα να δοκιμάσεις</Text>
         <div className="no-scrollbar" style={{ display: 'flex', flexDirection: 'row', overflowX: 'auto', paddingLeft: 24, paddingRight: 24, gap: 12 }}>
           {related.map((p) => (
             <AnimatedPress key={p.id} onPress={() => router.push(`/product/${p.id}`)} style={{ width: 120, flexShrink: 0 }}>
@@ -140,7 +140,7 @@ export default function ProductDetailScreen() {
 
       {/* Bottom CTA — pinned just above the dock */}
       <View style={{ position: 'fixed', bottom: 76, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: 430, boxSizing: 'border-box', paddingLeft: 24, paddingRight: 24, paddingTop: 12, paddingBottom: 12, backgroundColor: '#FAFAF7', borderTop: '1px solid #F0F0EC', zIndex: 30 }}>
-        <PrimaryButton label="Find in stores" icon="mappin.and.ellipse" color={product.accentColor} onPress={() => router.back()} />
+        <PrimaryButton label="Βρες το στα καταστήματα" icon="mappin.and.ellipse" color={product.accentColor} onPress={() => router.back()} />
       </View>
     </View>
   );

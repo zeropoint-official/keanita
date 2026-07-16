@@ -8,7 +8,7 @@ import { termsBlocks } from '@/data/legal';
 export default function TermsScreen() {
   return (
     <View style={{ backgroundColor: '#FAFAF7', minHeight: '100dvh', paddingBottom: 96 }}>
-      <ScreenHeader title="Terms & Conditions" />
+      <ScreenHeader title="Όροι & Κανονισμοί" />
 
       <View style={{ paddingLeft: 24, paddingRight: 24, paddingTop: 4 }}>
         {termsBlocks.map((b, i) => {

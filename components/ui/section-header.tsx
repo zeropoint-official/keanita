@@ -10,7 +10,7 @@ interface Props {
   onAction?: () => void;
 }
 
-export function SectionHeader({ title, actionLabel = 'See all', onAction }: Props) {
+export function SectionHeader({ title, actionLabel = 'Δες όλα', onAction }: Props) {
   return (
     <View
       style={{
@@ -23,7 +23,19 @@ export function SectionHeader({ title, actionLabel = 'See all', onAction }: Prop
         marginBottom: 14,
       }}
     >
-      <Text style={{ ...Fonts.display, fontSize: 19, color: '#2D2D3A' }}>{title}</Text>
+      <View>
+        <Text style={{ ...Fonts.displayHeavy, fontSize: 19, color: '#2D2D3A' }}>{title}</Text>
+        {/* Yellow marker swoosh under the title */}
+        <View
+          style={{
+            width: 44,
+            height: 5,
+            borderRadius: 3,
+            backgroundColor: '#FBD40D',
+            marginTop: 1,
+          }}
+        />
+      </View>
       {onAction && (
         <Pressable onPress={onAction}>
           <View
@@ -31,7 +43,7 @@ export function SectionHeader({ title, actionLabel = 'See all', onAction }: Prop
               flexDirection: 'row',
               alignItems: 'center',
               gap: 3,
-              backgroundColor: '#FFF0EE',
+              backgroundColor: '#FBD40D',
               paddingLeft: 11,
               paddingRight: 11,
               paddingTop: 6,
@@ -39,8 +51,8 @@ export function SectionHeader({ title, actionLabel = 'See all', onAction }: Prop
               borderRadius: 999,
             }}
           >
-            <Text style={{ ...Fonts.bodyHeavy, fontSize: 12, color: '#E84D3D' }}>{actionLabel}</Text>
-            <IconSymbol name="chevron.right" size={12} color="#E84D3D" />
+            <Text style={{ ...Fonts.bodyHeavy, fontSize: 12, color: '#C40408' }}>{actionLabel}</Text>
+            <IconSymbol name="chevron.right" size={12} color="#C40408" />
           </View>
         </Pressable>
       )}

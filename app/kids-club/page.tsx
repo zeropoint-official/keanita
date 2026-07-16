@@ -14,9 +14,9 @@ import { characters, type Character } from '@/data/mock/characters';
 type ActiveModal = 'benefits' | 'discounts' | 'join' | null;
 
 const ACTIONS: { key: 'benefits' | 'discounts' | 'join'; label: string; caption: string; image: string; bgColor: string; color: string }[] = [
-  { key: 'benefits', label: 'Benefits', caption: 'What you get', image: '/images/club/benefits.png', bgColor: '#FFF0EE', color: '#E84D3D' },
-  { key: 'discounts', label: 'Discounts', caption: '40+ stores', image: '/images/club/discounts.png', bgColor: '#E8F6FB', color: '#5DADE2' },
-  { key: 'join', label: 'Join now', caption: '2 quick steps', image: '/images/club/register.png', bgColor: '#FFF6E8', color: '#F5A623' },
+  { key: 'benefits', label: 'Οφέλη', caption: 'Τι κερδίζεις', image: '/images/club/benefits.png', bgColor: '#FFF0EE', color: '#E84D3D' },
+  { key: 'discounts', label: 'Εκπτώσεις', caption: '40+ καταστήματα', image: '/images/club/discounts.png', bgColor: '#E8F6FB', color: '#5DADE2' },
+  { key: 'join', label: 'Γίνε μέλος', caption: '2 γρήγορα βήματα', image: '/images/club/register.png', bgColor: '#FFF6E8', color: '#F5A623' },
 ];
 
 export default function KidsClubScreen() {
@@ -44,9 +44,9 @@ export default function KidsClubScreen() {
           </View>
 
           <View style={{ marginTop: 12, maxWidth: '62%' }}>
-            <Text style={{ ...Fonts.displayHeavy, color: '#FFFFFF', fontSize: 22, lineHeight: '26px' }}>The fun side of growing up.</Text>
+            <Text style={{ ...Fonts.displayHeavy, color: '#FFFFFF', fontSize: 22, lineHeight: '26px' }}>Η διασκεδαστική πλευρά του να μεγαλώνεις.</Text>
             <Text style={{ ...Fonts.body, color: 'rgba(255,255,255,0.92)', fontSize: 12.5, marginTop: 6, lineHeight: '17px' }}>
-              Gifts, discounts and events for the whole family.
+              Δώρα, εκπτώσεις και εκδηλώσεις για όλη την οικογένεια.
             </Text>
           </View>
         </LinearGradient>
@@ -71,8 +71,8 @@ export default function KidsClubScreen() {
       <View style={{ marginTop: 26, paddingLeft: 20, paddingRight: 20 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
           <View>
-            <Text style={{ ...Fonts.displayHeavy, fontSize: 16, color: '#2D2D3A' }}>Meet the family</Text>
-            <Text style={{ ...Fonts.body, fontSize: 11.5, color: '#8E8E9A', marginTop: 1 }}>Tap a character to learn their story</Text>
+            <Text style={{ ...Fonts.displayHeavy, fontSize: 16, color: '#2D2D3A' }}>Γνώρισε την παρέα</Text>
+            <Text style={{ ...Fonts.body, fontSize: 11.5, color: '#8E8E9A', marginTop: 1 }}>Πάτα έναν χαρακτήρα για να μάθεις την ιστορία του</Text>
           </View>
           <View style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: '#FFF0EE', alignItems: 'center', justifyContent: 'center' }}>
             <Text style={{ fontSize: 14 }}>✨</Text>
@@ -87,7 +87,7 @@ export default function KidsClubScreen() {
                   <Img src={c.image} style={{ width: 96, height: 96 }} contentFit="contain" />
                   <Text style={{ color: c.accentColor, fontSize: 14, marginTop: 8, letterSpacing: 0.5, ...Fonts.displayHeavy }}>{c.name}</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3, marginTop: 6, backgroundColor: '#FFFFFF', paddingLeft: 10, paddingRight: 10, paddingTop: 4, paddingBottom: 4, borderRadius: 999 }}>
-                    <Text style={{ fontSize: 10.5, color: c.accentColor, ...Fonts.bodyHeavy }}>Details</Text>
+                    <Text style={{ fontSize: 10.5, color: c.accentColor, ...Fonts.bodyHeavy }}>Λεπτομέρειες</Text>
                     <IconSymbol name="arrow.right" size={11} color={c.accentColor} />
                   </View>
                 </View>
@@ -105,7 +105,7 @@ export default function KidsClubScreen() {
           end={{ x: 1, y: 0 }}
           style={{ borderRadius: 18, paddingTop: 15, paddingBottom: 15, alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8 }}
         >
-          <Text style={{ color: '#FFFFFF', fontSize: 15, letterSpacing: 0.4, ...Fonts.displayHeavy }}>Sign up your child</Text>
+          <Text style={{ color: '#FFFFFF', fontSize: 15, letterSpacing: 0.4, ...Fonts.displayHeavy }}>Γράψε το παιδί σου</Text>
           <IconSymbol name="arrow.right" size={16} color="#FFFFFF" />
         </LinearGradient>
       </AnimatedPress>

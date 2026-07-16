@@ -18,8 +18,15 @@ const FILTER_COLORS: Record<Filter, { active: string; bg: string }> = {
   Announcements: { active: '#5DADE2', bg: '#EDF7FD' },
 };
 
-function FilterChip({ label, isActive, onPress }: { label: string; isActive: boolean; onPress: () => void }) {
-  const colors = FILTER_COLORS[label as Filter];
+const FILTER_LABELS: Record<Filter, string> = {
+  All: 'Όλα',
+  Events: 'Εκδηλώσεις',
+  Seminars: 'Σεμινάρια',
+  Announcements: 'Ανακοινώσεις',
+};
+
+function FilterChip({ label, isActive, onPress }: { label: Filter; isActive: boolean; onPress: () => void }) {
+  const colors = FILTER_COLORS[label];
   return (
     <Pressable onPress={onPress} style={{ marginRight: 8, flexShrink: 0 }}>
       <View
@@ -33,7 +40,7 @@ function FilterChip({ label, isActive, onPress }: { label: string; isActive: boo
           border: isActive ? 'none' : '1px solid #F0F0EC',
         }}
       >
-        <Text style={{ ...Fonts.body, fontSize: 14, color: isActive ? '#FFFFFF' : '#8E8E9A' }}>{label}</Text>
+        <Text style={{ ...Fonts.body, fontSize: 14, color: isActive ? '#FFFFFF' : '#8E8E9A' }}>{FILTER_LABELS[label]}</Text>
       </View>
     </Pressable>
   );
@@ -57,9 +64,9 @@ export default function EventsScreen() {
         end={{ x: 1, y: 1 }}
         style={{ paddingTop: 32, paddingBottom: 28, paddingLeft: 24, paddingRight: 24, borderBottomLeftRadius: 28, borderBottomRightRadius: 28 }}
       >
-        <Text style={{ ...Fonts.displayHeavy, color: '#FFFFFF', fontSize: 24 }}>Upcoming Events</Text>
+        <Text style={{ ...Fonts.displayHeavy, color: '#FFFFFF', fontSize: 24 }}>Επερχόμενες εκδηλώσεις</Text>
         <Text style={{ ...Fonts.body, color: 'rgba(255,255,255,0.7)', fontSize: 14, marginTop: 4 }}>
-          Discover fun activities near you
+          Ανακάλυψε διασκεδαστικές δραστηριότητες κοντά σου
         </Text>
       </LinearGradient>
 
@@ -87,7 +94,7 @@ export default function EventsScreen() {
 
       {filtered.length === 0 && (
         <View style={{ alignItems: 'center', paddingTop: 80, paddingBottom: 80 }}>
-          <Text style={{ ...Fonts.body, color: '#B8B8C4', fontSize: 14 }}>No events found</Text>
+          <Text style={{ ...Fonts.body, color: '#B8B8C4', fontSize: 14 }}>Δεν βρέθηκαν εκδηλώσεις</Text>
         </View>
       )}
     </View>

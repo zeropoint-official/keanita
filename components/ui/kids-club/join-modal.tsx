@@ -78,11 +78,11 @@ export function JoinModal({ visible, onClose }: Props) {
 
   const validateStep1 = () => {
     if (!form.firstName.trim() || !form.lastName.trim()) {
-      window.alert('Please enter your first and last name.');
+      window.alert('Συμπλήρωσε το όνομα και το επώνυμό σου.');
       return false;
     }
     if (!form.email.trim() || !form.email.includes('@')) {
-      window.alert('Please enter a valid email.');
+      window.alert('Συμπλήρωσε ένα έγκυρο email.');
       return false;
     }
     return true;
@@ -90,13 +90,13 @@ export function JoinModal({ visible, onClose }: Props) {
 
   const onSubmit = () => {
     if (!form.childName.trim()) {
-      window.alert("Please add your child's name.");
+      window.alert('Πρόσθεσε το όνομα του παιδιού σου.');
       return;
     }
     setSubmitting(true);
     setTimeout(() => {
       setSubmitting(false);
-      window.alert(`🎉 Welcome to the Club!\n\nThanks ${form.firstName}! ${form.childName}'s membership request is being processed.`);
+      window.alert(`🎉 Καλώς ήρθες στο Club!\n\nΕυχαριστούμε ${form.firstName}! Το αίτημα συνδρομής για ${form.childName} επεξεργάζεται.`);
       handleClose();
     }, 700);
   };
@@ -105,9 +105,9 @@ export function JoinModal({ visible, onClose }: Props) {
     <ModalShell
       visible={visible}
       onClose={handleClose}
-      chip={step === 1 ? 'STEP 1 OF 2' : 'STEP 2 OF 2'}
-      title={step === 1 ? 'Your details' : 'Your child'}
-      subtitle={step === 1 ? "We'll email you the membership confirmation." : "Add your child's info to issue their KEANITO card."}
+      chip={step === 1 ? 'ΒΗΜΑ 1 ΑΠΟ 2' : 'ΒΗΜΑ 2 ΑΠΟ 2'}
+      title={step === 1 ? 'Τα στοιχεία σου' : 'Το παιδί σου'}
+      subtitle={step === 1 ? 'Θα σου στείλουμε την επιβεβαίωση συνδρομής με email.' : 'Πρόσθεσε τα στοιχεία του παιδιού σου για την ΚΕΑΝΙΤΟ-κάρτα.'}
       accent="#6BBF6A"
       toolbar={
         <div style={{ paddingLeft: 22, paddingRight: 22, marginBottom: 12 }}>
@@ -122,14 +122,14 @@ export function JoinModal({ visible, onClose }: Props) {
           <>
             <div style={{ display: 'flex', flexDirection: 'row', gap: 10 }}>
               <div style={{ flex: 1 }}>
-                <Field label="First Name" value={form.firstName} onChange={(v) => setForm((s) => ({ ...s, firstName: v }))} placeholder="Maria" />
+                <Field label="Όνομα" value={form.firstName} onChange={(v) => setForm((s) => ({ ...s, firstName: v }))} placeholder="Μαρία" />
               </div>
               <div style={{ flex: 1 }}>
-                <Field label="Last Name" value={form.lastName} onChange={(v) => setForm((s) => ({ ...s, lastName: v }))} placeholder="Georgiou" />
+                <Field label="Επώνυμο" value={form.lastName} onChange={(v) => setForm((s) => ({ ...s, lastName: v }))} placeholder="Γεωργίου" />
               </div>
             </div>
             <Field label="Email" value={form.email} onChange={(v) => setForm((s) => ({ ...s, email: v }))} placeholder="parent@email.com" type="email" />
-            <Field label="Mobile" value={form.mobile} onChange={(v) => setForm((s) => ({ ...s, mobile: v }))} placeholder="+357 99 ..." type="tel" />
+            <Field label="Κινητό" value={form.mobile} onChange={(v) => setForm((s) => ({ ...s, mobile: v }))} placeholder="+357 99 ..." type="tel" />
 
             <AnimatedPress onPress={() => { if (validateStep1()) setStep(2); }} style={{ marginTop: 6 }}>
               <LinearGradient
@@ -138,20 +138,20 @@ export function JoinModal({ visible, onClose }: Props) {
                 end={{ x: 1, y: 0 }}
                 style={{ borderRadius: 14, paddingTop: 14, paddingBottom: 14, alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8 }}
               >
-                <span style={{ color: '#FFFFFF', fontSize: 14.5, fontWeight: 900 }}>Continue</span>
+                <span style={{ color: '#FFFFFF', fontSize: 14.5, fontWeight: 900 }}>Συνέχεια</span>
                 <IconSymbol name="arrow.right" size={15} color="#FFFFFF" />
               </LinearGradient>
             </AnimatedPress>
           </>
         ) : (
           <>
-            <Field label="Child's Name" value={form.childName} onChange={(v) => setForm((s) => ({ ...s, childName: v }))} placeholder="Anna" />
-            <Field label="Child's Birthday" value={form.childDob} onChange={(v) => setForm((s) => ({ ...s, childDob: v }))} placeholder="DD / MM / YYYY" />
+            <Field label="Όνομα παιδιού" value={form.childName} onChange={(v) => setForm((s) => ({ ...s, childName: v }))} placeholder="Άννα" />
+            <Field label="Γενέθλια παιδιού" value={form.childDob} onChange={(v) => setForm((s) => ({ ...s, childDob: v }))} placeholder="ΗΗ / ΜΜ / ΕΕΕΕ" />
 
             <div style={{ display: 'flex', flexDirection: 'row', gap: 8, marginTop: 8 }}>
               <AnimatedPress style={{ flex: 1 }} onPress={() => setStep(1)}>
                 <div style={{ backgroundColor: '#F4F4F0', borderRadius: 14, paddingTop: 14, paddingBottom: 14, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <span style={{ color: '#2D2D3A', fontSize: 14, fontWeight: 800 }}>Back</span>
+                  <span style={{ color: '#2D2D3A', fontSize: 14, fontWeight: 800 }}>Πίσω</span>
                 </div>
               </AnimatedPress>
               <AnimatedPress style={{ flex: 2 }} onPress={submitting ? undefined : onSubmit}>
@@ -161,14 +161,14 @@ export function JoinModal({ visible, onClose }: Props) {
                   end={{ x: 1, y: 0 }}
                   style={{ borderRadius: 14, paddingTop: 14, paddingBottom: 14, alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8 }}
                 >
-                  <span style={{ color: '#FFFFFF', fontSize: 14.5, fontWeight: 900 }}>{submitting ? 'Sending...' : 'Join the Club'}</span>
+                  <span style={{ color: '#FFFFFF', fontSize: 14.5, fontWeight: 900 }}>{submitting ? 'Αποστολή...' : 'Γίνε μέλος'}</span>
                   {!submitting && <IconSymbol name="checkmark" size={15} color="#FFFFFF" />}
                 </LinearGradient>
               </AnimatedPress>
             </div>
 
             <span style={{ fontSize: 10.5, color: '#B8B8C4', textAlign: 'center', marginTop: 14, lineHeight: '15px' }}>
-              By joining you agree to the KEANITO Kids Club terms &amp; parental consent.
+              Με την εγγραφή αποδέχεσαι τους όρους του ΚΕΑΝΙΤΟ Kids Club &amp; τη γονική συναίνεση.
             </span>
           </>
         )}

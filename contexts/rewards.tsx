@@ -29,13 +29,13 @@ interface RewardsState {
 }
 
 const SEED_HISTORY: KPEntry[] = [
-  { id: 's1', label: 'Daily login bonus', amount: 5, date: 'Today, 08:12', icon: 'login' },
-  { id: 's2', label: 'Fruit Frenzy — 32 fruits', amount: 32, date: 'Today, 08:15', icon: 'game' },
-  { id: 's3', label: '4-day streak bonus', amount: 10, date: 'Today, 08:12', icon: 'streak' },
-  { id: 's4', label: 'Scanned Orange juice QR', amount: 20, date: 'Yesterday', icon: 'qr' },
-  { id: 's5', label: 'RSVP — Riverland Fun Day', amount: 10, date: 'Yesterday', icon: 'event' },
-  { id: 's6', label: 'Game completed bonus', amount: 5, date: '2 days ago', icon: 'game' },
-  { id: 's7', label: 'Completed your profile', amount: 50, date: '3 days ago', icon: 'bonus' },
+  { id: 's1', label: 'Μπόνους ημερήσιας σύνδεσης', amount: 5, date: 'Σήμερα, 08:12', icon: 'login' },
+  { id: 's2', label: 'Φρουτοτρέλα — 32 φρούτα', amount: 32, date: 'Σήμερα, 08:15', icon: 'game' },
+  { id: 's3', label: 'Μπόνους σερί 4 ημερών', amount: 10, date: 'Σήμερα, 08:12', icon: 'streak' },
+  { id: 's4', label: 'Σκανάρισμα QR χυμού Πορτοκάλι', amount: 20, date: 'Χθες', icon: 'qr' },
+  { id: 's5', label: 'Δήλωση συμμετοχής — Ημέρα διασκέδασης στο Riverland', amount: 10, date: 'Χθες', icon: 'event' },
+  { id: 's6', label: 'Μπόνους ολοκλήρωσης παιχνιδιού', amount: 5, date: 'πριν 2 ημέρες', icon: 'game' },
+  { id: 's7', label: 'Συμπλήρωσες το προφίλ σου', amount: 50, date: 'πριν 3 ημέρες', icon: 'bonus' },
 ];
 
 const RewardsContext = createContext<RewardsState | null>(null);
@@ -51,7 +51,7 @@ export function RewardsProvider({ children }: { children: ReactNode }) {
     setBalance((b) => b + amount);
     setLifetimeEarned((l) => l + amount);
     setHistory((prev) => [
-      { id: `e${Date.now()}`, label, amount, date: 'Just now', icon },
+      { id: `e${Date.now()}`, label, amount, date: 'Μόλις τώρα', icon },
       ...prev,
     ]);
   }, []);
@@ -61,7 +61,7 @@ export function RewardsProvider({ children }: { children: ReactNode }) {
       if (balance < amount) return false;
       setBalance((b) => b - amount);
       setHistory((prev) => [
-        { id: `x${Date.now()}`, label, amount: -amount, date: 'Just now', icon: 'gift' },
+        { id: `x${Date.now()}`, label, amount: -amount, date: 'Μόλις τώρα', icon: 'gift' },
         ...prev,
       ]);
       return true;

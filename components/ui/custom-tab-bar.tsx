@@ -6,11 +6,11 @@ import { Fonts } from '@/constants/fonts';
 import { IconSymbol, type IconSymbolName } from './icon-symbol';
 
 const TABS: { href: string; icon: IconSymbolName; label: string }[] = [
-  { href: '/', icon: 'house.fill', label: 'Home' },
-  { href: '/events', icon: 'calendar', label: 'Events' },
-  { href: '/games', icon: 'gamecontroller.fill', label: 'Games' },
-  { href: '/characters', icon: 'star.fill', label: 'Characters' },
-  { href: '/profile', icon: 'person.fill', label: 'Profile' },
+  { href: '/', icon: 'house.fill', label: 'Αρχική' },
+  { href: '/events', icon: 'calendar', label: 'Εκδηλώσεις' },
+  { href: '/games', icon: 'gamecontroller.fill', label: 'Παιχνίδια' },
+  { href: '/characters', icon: 'star.fill', label: 'Χαρακτήρες' },
+  { href: '/profile', icon: 'person.fill', label: 'Προφίλ' },
 ];
 
 export function CustomTabBar() {
@@ -62,20 +62,20 @@ export function CustomTabBar() {
                 width: 52,
                 height: 30,
                 borderRadius: 15,
-                backgroundColor: isFocused ? '#FFF0EE' : 'transparent',
+                backgroundColor: isFocused ? '#FFECEA' : 'transparent',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
             >
-              <IconSymbol name={tab.icon} size={21} color={isFocused ? '#E84D3D' : '#B8B8C4'} />
+              <IconSymbol name={tab.icon} size={21} color={isFocused ? '#E60C10' : '#B8B8C4'} />
             </div>
             <span
               style={{
                 ...(isFocused ? Fonts.bodyHeavy : Fonts.bodyBold),
                 fontSize: 10,
                 marginTop: 3,
-                color: isFocused ? '#E84D3D' : '#B8B8C4',
+                color: isFocused ? '#E60C10' : '#B8B8C4',
               }}
             >
               {tab.label}

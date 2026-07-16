@@ -19,23 +19,22 @@ interface NavLink {
 }
 
 const PRIMARY_LINKS: NavLink[] = [
-  { label: 'Home', icon: 'house.fill', color: '#E84D3D', bg: '#FFF0EE', href: '/' },
-  { label: 'Our Story', icon: 'sparkles', color: '#9B7FD4', bg: '#F4F0FA', href: '/about' },
-  { label: 'Products', icon: 'leaf.fill', color: '#6BBF6A', bg: '#EEFBEE', href: '/products' },
-  { label: 'Seminars', icon: 'newspaper.fill', color: '#5DADE2', bg: '#EDF7FD', href: '/seminars' },
-  { label: 'Events', icon: 'calendar', color: '#F5A623', bg: '#FFF6E8', href: '/events' },
-  { label: 'Kids Club', icon: 'star.fill', color: '#FBBF24', bg: '#FFFBEB', href: '/kids-club' },
+  { label: 'Αρχική', icon: 'house.fill', color: '#E60C10', bg: '#FFECEA', href: '/' },
+  { label: 'Η ιστορία μας', icon: 'sparkles', color: '#9C2BB4', bg: '#F7EAFA', href: '/about' },
+  { label: 'Προϊόντα', icon: 'leaf.fill', color: '#53B41A', bg: '#EAF7E0', href: '/products' },
+  { label: 'Σεμινάρια', icon: 'newspaper.fill', color: '#12AEEB', bg: '#E1F5FD', href: '/seminars' },
+  { label: 'Εκδηλώσεις', icon: 'calendar', color: '#F5820D', bg: '#FFF0E0', href: '/events' },
+  { label: 'Kids Club', icon: 'star.fill', color: '#FBD40D', bg: '#FFF8D9', href: '/kids-club' },
+  { label: 'Λίστα εκπτώσεων', icon: 'percent', color: '#9C2BB4', bg: '#F7EAFA', href: '/discounts' },
+  { label: 'Puzzles & Δραστηριότητες', icon: 'paintbrush.fill', color: '#F14E9B', bg: '#FDF0F7', href: '/activities' },
 ];
 
 const SECONDARY_LINKS: NavLink[] = [
-  { label: 'Rewards', icon: 'gift.fill', color: '#E84D3D', bg: '#FFF0EE', href: '/rewards' },
-  { label: 'Profile', icon: 'person.fill', color: '#2D2D3A', bg: '#F0F0EC', href: '/profile' },
-  { label: 'Notifications', icon: 'bell.fill', color: '#5DADE2', bg: '#EDF7FD', href: '/notifications' },
-];
-
-const MORE_LINKS: NavLink[] = [
-  { label: 'Contact', icon: 'envelope.fill', color: '#6BBF6A', bg: '#EEFBEE', href: '/contact' },
-  { label: 'Terms & Conditions', icon: 'info.circle.fill', color: '#9B7FD4', bg: '#F4F0FA', href: '/terms' },
+  { label: 'Ανταμοιβές', icon: 'gift.fill', color: '#E60C10', bg: '#FFECEA', href: '/rewards' },
+  { label: 'Προφίλ', icon: 'person.fill', color: '#2D2D3A', bg: '#F0F0EC', href: '/profile' },
+  { label: 'Ειδοποιήσεις', icon: 'bell.fill', color: '#12AEEB', bg: '#E1F5FD', href: '/notifications' },
+  { label: 'Επικοινωνία', icon: 'phone.fill', color: '#F5820D', bg: '#FFF0E0', href: '/contact' },
+  { label: 'Όροι & Κανονισμοί', icon: 'info.circle.fill', color: '#8E8E9A', bg: '#F0F0EC', href: '/terms' },
 ];
 
 export function NavDrawer({ visible, onClose }: Props) {
@@ -83,7 +82,7 @@ export function NavDrawer({ visible, onClose }: Props) {
             {/* Brand header */}
             <div
               style={{
-                backgroundImage: 'linear-gradient(135deg, #E84D3D, #F5A623)',
+                backgroundImage: 'linear-gradient(135deg, #E60C10, #F5820D)',
                 paddingTop: 28,
                 paddingBottom: 22,
                 paddingLeft: 22,
@@ -108,7 +107,7 @@ export function NavDrawer({ visible, onClose }: Props) {
                   </div>
                   <div>
                     <span style={{ ...Fonts.body, color: '#FFFFFF', fontSize: 12, opacity: 0.8, display: 'block' }}>
-                      Welcome to
+                      Καλώς ήρθες στην
                     </span>
                     <span style={{ ...Fonts.displayHeavy, color: '#FFFFFF', fontSize: 20, display: 'block' }}>
                       KEANITA
@@ -135,7 +134,7 @@ export function NavDrawer({ visible, onClose }: Props) {
               </div>
 
               <span style={{ ...Fonts.body, color: 'rgba(255,255,255,0.85)', fontSize: 13, marginTop: 16, lineHeight: '20px', display: 'block' }}>
-                Tasty, healthy goodness for kids — since 1981 🍊
+                Νόστιμες, υγιεινές λιχουδιές για παιδιά — από το 1981 🍊
               </span>
             </div>
 
@@ -143,7 +142,7 @@ export function NavDrawer({ visible, onClose }: Props) {
             <div className="no-scrollbar" style={{ overflowY: 'auto', paddingBottom: 28, flex: 1 }}>
               <div style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 20 }}>
                 <span style={{ ...Fonts.bodyBold, fontSize: 11, color: '#B8B8C4', textTransform: 'uppercase', letterSpacing: 1, paddingLeft: 8, marginBottom: 8, display: 'block' }}>
-                  Explore
+                  Εξερεύνησε
                 </span>
                 {PRIMARY_LINKS.map((link) => (
                   <DrawerLink key={link.label} link={link} onPress={() => go(link.href)} />
@@ -152,18 +151,9 @@ export function NavDrawer({ visible, onClose }: Props) {
 
               <div style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 20 }}>
                 <span style={{ ...Fonts.bodyBold, fontSize: 11, color: '#B8B8C4', textTransform: 'uppercase', letterSpacing: 1, paddingLeft: 8, marginBottom: 8, display: 'block' }}>
-                  Your account
+                  Ο λογαριασμός σου
                 </span>
                 {SECONDARY_LINKS.map((link) => (
-                  <DrawerLink key={link.label} link={link} onPress={() => go(link.href)} />
-                ))}
-              </div>
-
-              <div style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 20 }}>
-                <span style={{ ...Fonts.bodyBold, fontSize: 11, color: '#B8B8C4', textTransform: 'uppercase', letterSpacing: 1, paddingLeft: 8, marginBottom: 8, display: 'block' }}>
-                  More
-                </span>
-                {MORE_LINKS.map((link) => (
                   <DrawerLink key={link.label} link={link} onPress={() => go(link.href)} />
                 ))}
               </div>
@@ -173,7 +163,7 @@ export function NavDrawer({ visible, onClose }: Props) {
                   © {new Date().getFullYear()} KEANITA
                 </span>
                 <span style={{ ...Fonts.body, fontSize: 11, color: '#B8B8C4', marginTop: 4, display: 'block' }}>
-                  v1.0 · Made with 🧡
+                  v1.0 · Φτιαγμένο με 🧡
                 </span>
               </div>
             </div>

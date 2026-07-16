@@ -310,7 +310,7 @@ export default function FruitFrenzy() {
         stopLoop();
         setBirdScreenY(birdY.current);
         const earned = scoreRef.current + 5;
-        earn(earned, `Fruit Frenzy — ${scoreRef.current} fruits`, 'game');
+        earn(earned, `Φρουτοτρέλα — ${scoreRef.current} φρούτα`, 'game');
       }
     },
     [stopLoop, earn],
@@ -633,7 +633,7 @@ export default function FruitFrenzy() {
           }}
         >
           <div style={{ ...hudPill, gap: 8 }}>
-            <span style={{ ...Fonts.bodyBold, fontSize: 18, color: '#8E8E9A' }}>SCORE</span>
+            <span style={{ ...Fonts.bodyBold, fontSize: 18, color: '#8E8E9A' }}>ΣΚΟΡ</span>
             <span style={{ ...Fonts.displayHeavy, fontSize: 24, color: '#2D2D3A' }}>{score}</span>
           </div>
           <div style={{ ...hudPill, gap: 6 }}>
@@ -671,10 +671,10 @@ export default function FruitFrenzy() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={ATHLOKINISI_LOGO} alt="Athlokinisi" style={{ width: 120, height: 48, marginBottom: 10, objectFit: 'contain' }} />
             <span style={{ ...Fonts.displayHeavy, fontSize: 22, color: '#1E63B5', textAlign: 'center' }}>
-              You collected the drop!
+              Έπιασες το δώρο!
             </span>
             <span style={{ ...Fonts.body, fontSize: 14, color: '#8E8E9A', marginTop: 6, textAlign: 'center', lineHeight: '20px', whiteSpace: 'pre-line' }}>
-              {'This is a gift from Athlokinisi.\nYou can pick it up from the store!'}
+              {'Είναι ένα δώρο από την Αθλοκίνηση.\nΜπορείς να το παραλάβεις από το κατάστημα!'}
             </span>
 
             <div style={{ position: 'relative', width: 170, height: 130, display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 8 }}>
@@ -717,7 +717,7 @@ export default function FruitFrenzy() {
                   boxShadow: '0 6px 12px rgba(30,99,181,0.35)',
                 }}
               >
-                <span style={{ ...Fonts.displayHeavy, color: 'white', fontSize: 17 }}>Receive Gift</span>
+                <span style={{ ...Fonts.displayHeavy, color: 'white', fontSize: 17 }}>Παραλαβή δώρου</span>
               </div>
             </button>
           </div>
@@ -739,9 +739,9 @@ export default function FruitFrenzy() {
           <div style={{ backgroundColor: 'white', borderRadius: 28, padding: 32, display: 'flex', flexDirection: 'column', alignItems: 'center', width: SCREEN_W - 80, boxShadow: '0 8px 24px rgba(0,0,0,0.15)' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={CHARACTER_IMG} alt="" style={{ width: 96, height: 96, marginBottom: 16, objectFit: 'contain' }} />
-            <span style={{ ...Fonts.displayHeavy, fontSize: 24, color: '#2D2D3A', textAlign: 'center' }}>Fruit Frenzy</span>
+            <span style={{ ...Fonts.displayHeavy, fontSize: 24, color: '#2D2D3A', textAlign: 'center' }}>Φρουτοτρέλα</span>
             <span style={{ ...Fonts.body, fontSize: 14, color: '#8E8E9A', marginTop: 6, textAlign: 'center', lineHeight: '20px', whiteSpace: 'pre-line' }}>
-              {'Tap to fly! Collect fruits 🍊 and avoid bombs 💣\nYou have 3 lives!'}
+              {'Πάτα για να πετάξεις! Μάζεψε φρούτα 🍊 και απόφυγε τις βόμβες 💣\nΈχεις 3 ζωές!'}
             </span>
 
             <div style={{ display: 'flex', flexDirection: 'row', gap: 16, marginTop: 20, marginBottom: 8 }}>
@@ -756,9 +756,9 @@ export default function FruitFrenzy() {
             </div>
 
             <div style={{ backgroundColor: '#E84D3D', borderRadius: 16, paddingLeft: 32, paddingRight: 32, paddingTop: 14, paddingBottom: 14, marginTop: 16 }}>
-              <span style={{ ...Fonts.bodyBold, color: 'white', fontSize: 16 }}>Tap to Start</span>
+              <span style={{ ...Fonts.bodyBold, color: 'white', fontSize: 16 }}>Πάτα για να ξεκινήσεις</span>
             </div>
-            {bestScore > 0 && <span style={{ ...Fonts.body, fontSize: 13, color: '#B8B8C4', marginTop: 12 }}>Best: {bestScore}</span>}
+            {bestScore > 0 && <span style={{ ...Fonts.body, fontSize: 13, color: '#B8B8C4', marginTop: 12 }}>Ρεκόρ: {bestScore}</span>}
           </div>
         </div>
       )}
@@ -767,26 +767,26 @@ export default function FruitFrenzy() {
       {gameState === 'dead' && SCREEN_W > 0 && (
         <div style={{ position: 'absolute', inset: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.3)' }}>
           <div style={{ backgroundColor: 'white', borderRadius: 28, padding: 32, display: 'flex', flexDirection: 'column', alignItems: 'center', width: SCREEN_W - 80, boxShadow: '0 8px 24px rgba(0,0,0,0.15)' }}>
-            <span style={{ ...Fonts.displayHeavy, fontSize: 28, color: '#E84D3D' }}>Game Over!</span>
-            <span style={{ ...Fonts.body, fontSize: 14, color: '#8E8E9A', marginTop: 6 }}>3 bomb hits. Try again!</span>
+            <span style={{ ...Fonts.displayHeavy, fontSize: 28, color: '#E84D3D' }}>Τέλος παιχνιδιού!</span>
+            <span style={{ ...Fonts.body, fontSize: 14, color: '#8E8E9A', marginTop: 6 }}>3 βόμβες σε πέτυχαν. Δοκίμασε ξανά!</span>
             <div style={{ display: 'flex', flexDirection: 'row', gap: 24, marginTop: 20 }}>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <span style={{ ...Fonts.body, fontSize: 13, color: '#8E8E9A' }}>Score</span>
+                <span style={{ ...Fonts.body, fontSize: 13, color: '#8E8E9A' }}>Σκορ</span>
                 <span style={{ ...Fonts.displayHeavy, fontSize: 36, color: '#2D2D3A' }}>{score}</span>
               </div>
               <div style={{ width: 1, backgroundColor: '#F0F0EC' }} />
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <span style={{ ...Fonts.body, fontSize: 13, color: '#8E8E9A' }}>Best</span>
+                <span style={{ ...Fonts.body, fontSize: 13, color: '#8E8E9A' }}>Ρεκόρ</span>
                 <span style={{ ...Fonts.displayHeavy, fontSize: 36, color: '#F5A623' }}>{Math.max(bestScore, score)}</span>
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#FFFBEB', borderRadius: 999, paddingLeft: 16, paddingRight: 16, paddingTop: 8, paddingBottom: 8, marginTop: 20, border: '1px solid #FBBF24' }}>
               <span style={{ fontSize: 14 }}>⭐</span>
-              <span style={{ ...Fonts.displayHeavy, fontSize: 13, color: '#B8860B' }}>+{score + 5} KP earned</span>
+              <span style={{ ...Fonts.displayHeavy, fontSize: 13, color: '#B8860B' }}>+{score + 5} KP κερδισμένοι</span>
             </div>
 
             <div style={{ backgroundColor: '#E84D3D', borderRadius: 16, paddingLeft: 32, paddingRight: 32, paddingTop: 14, paddingBottom: 14, marginTop: 16 }}>
-              <span style={{ ...Fonts.bodyBold, color: 'white', fontSize: 16 }}>Tap to Retry</span>
+              <span style={{ ...Fonts.bodyBold, color: 'white', fontSize: 16 }}>Πάτα για να ξαναπαίξεις</span>
             </div>
           </div>
         </div>

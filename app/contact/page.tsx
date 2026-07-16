@@ -9,10 +9,10 @@ import { IconSymbol, type IconSymbolName } from '@/components/ui/icon-symbol';
 import { companyContact } from '@/data/legal';
 
 const INFO: { icon: IconSymbolName; color: string; bg: string; label: string; value: string; href?: string }[] = [
-  { icon: 'phone.fill', color: '#6BBF6A', bg: '#EEFBEE', label: 'Phone', value: '+357 25 883100', href: `tel:${companyContact.phone}` },
-  { icon: 'phone.fill', color: '#F5A623', bg: '#FFF6E8', label: 'Freephone', value: companyContact.freephone, href: `tel:${companyContact.freephone}` },
+  { icon: 'phone.fill', color: '#6BBF6A', bg: '#EEFBEE', label: 'Τηλέφωνο', value: '+357 25 883100', href: `tel:${companyContact.phone}` },
+  { icon: 'phone.fill', color: '#F5A623', bg: '#FFF6E8', label: 'Δωρεάν γραμμή', value: companyContact.freephone, href: `tel:${companyContact.freephone}` },
   { icon: 'envelope.fill', color: '#5DADE2', bg: '#EDF7FD', label: 'Email', value: companyContact.email, href: `mailto:${companyContact.email}` },
-  { icon: 'mappin.and.ellipse', color: '#E84D3D', bg: '#FFF0EE', label: 'Address', value: companyContact.address },
+  { icon: 'mappin.and.ellipse', color: '#E84D3D', bg: '#FFF0EE', label: 'Διεύθυνση', value: companyContact.address },
 ];
 
 const fieldStyle: React.CSSProperties = {
@@ -43,17 +43,17 @@ export default function ContactScreen() {
 
   const onSend = () => {
     if (!name.trim() || !email.trim() || !message.trim()) {
-      window.alert('Please fill in your name, email and message.');
+      window.alert('Συμπλήρωσε όλα τα πεδία για να στείλεις το μήνυμά σου.');
       return;
     }
     const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-    window.location.href = `mailto:${companyContact.email}?subject=${encodeURIComponent(subject || 'Message from Keanita app')}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:${companyContact.email}?subject=${encodeURIComponent(subject || 'Μήνυμα από την εφαρμογή Keanita')}&body=${encodeURIComponent(body)}`;
     setSent(true);
   };
 
   return (
     <View style={{ backgroundColor: '#FAFAF7', minHeight: '100dvh', paddingBottom: 96 }}>
-      <ScreenHeader title="Contact Us" subtitle="We'd love to hear from you" />
+      <ScreenHeader title="Επικοινωνία" subtitle="Θα χαρούμε να σε ακούσουμε" />
 
       {/* Company info */}
       <View style={{ paddingLeft: 24, paddingRight: 24, paddingTop: 4 }}>
@@ -87,26 +87,26 @@ export default function ContactScreen() {
       </View>
 
       {/* Message form */}
-      <Text style={{ ...Fonts.displayMedium, fontSize: 18, color: '#2D2D3A', marginLeft: 24, marginRight: 24, marginTop: 28, marginBottom: 12 }}>Send us a message</Text>
+      <Text style={{ ...Fonts.displayMedium, fontSize: 18, color: '#2D2D3A', marginLeft: 24, marginRight: 24, marginTop: 28, marginBottom: 12 }}>Στείλε μας μήνυμα</Text>
       <View style={{ paddingLeft: 24, paddingRight: 24 }}>
         <View style={{ marginBottom: 14 }}>
-          <Label>Your name</Label>
-          <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Maria Georgiou" style={fieldStyle} />
+          <Label>Το όνομά σου</Label>
+          <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Μαρία Γεωργίου" style={fieldStyle} />
         </View>
         <View style={{ marginBottom: 14 }}>
           <Label>Email</Label>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" style={fieldStyle} />
         </View>
         <View style={{ marginBottom: 14 }}>
-          <Label>Subject</Label>
-          <input value={subject} onChange={(e) => setSubject(e.target.value)} placeholder="How can we help?" style={fieldStyle} />
+          <Label>Θέμα</Label>
+          <input value={subject} onChange={(e) => setSubject(e.target.value)} placeholder="Πώς μπορούμε να βοηθήσουμε;" style={fieldStyle} />
         </View>
         <View style={{ marginBottom: 20 }}>
-          <Label>Message</Label>
-          <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Write your message…" rows={5} style={{ ...fieldStyle, resize: 'vertical', lineHeight: '20px' }} />
+          <Label>Μήνυμα</Label>
+          <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Γράψε το μήνυμά σου…" rows={5} style={{ ...fieldStyle, resize: 'vertical', lineHeight: '20px' }} />
         </View>
 
-        <PrimaryButton label={sent ? 'Opening your mail app…' : 'Send message'} icon="paperplane.fill" color="#E84D3D" onPress={onSend} />
+        <PrimaryButton label={sent ? 'Άνοιγμα εφαρμογής email…' : 'Αποστολή μηνύματος'} icon="paperplane.fill" color="#E84D3D" onPress={onSend} />
       </View>
     </View>
   );

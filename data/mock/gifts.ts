@@ -15,8 +15,8 @@ export const gifts: Gift[] = [
   // ─── Digital — instant, self-serve ───
   {
     id: 'd1',
-    name: 'Personalised Birthday Card',
-    description: 'A digital Keanita card with your name on it.',
+    name: 'Προσωποποιημένη κάρτα γενεθλίων',
+    description: 'Μια ψηφιακή κάρτα Keanita με το όνομά σου.',
     cost: 150,
     category: 'digital',
     emoji: '🎂',
@@ -27,8 +27,8 @@ export const gifts: Gift[] = [
   },
   {
     id: 'd2',
-    name: 'Animated Profile Badge',
-    description: 'A sparkly badge that shows on your profile.',
+    name: 'Κινούμενο σήμα προφίλ',
+    description: 'Ένα λαμπερό σήμα που εμφανίζεται στο προφίλ σου.',
     cost: 200,
     category: 'digital',
     emoji: '⭐',
@@ -39,8 +39,8 @@ export const gifts: Gift[] = [
   },
   {
     id: 'd3',
-    name: 'Printable Activity Pack',
-    description: 'Mazes, colouring & puzzles to print at home.',
+    name: 'Εκτυπώσιμο πακέτο δραστηριοτήτων',
+    description: 'Λαβύρινθοι, ζωγραφική & παζλ για εκτύπωση στο σπίτι.',
     cost: 250,
     category: 'digital',
     emoji: '🧩',
@@ -51,8 +51,8 @@ export const gifts: Gift[] = [
   },
   {
     id: 'd4',
-    name: 'Digital Storybook',
-    description: 'An in-app Keanita adventure storybook.',
+    name: 'Ψηφιακό παραμύθι',
+    description: 'Ένα παραμύθι περιπέτειας Keanita μέσα στην εφαρμογή.',
     cost: 300,
     category: 'digital',
     emoji: '📖',
@@ -63,8 +63,8 @@ export const gifts: Gift[] = [
   },
   {
     id: 'd5',
-    name: 'Premium Outfit Bundle',
-    description: 'Dress your character in 3 new outfits.',
+    name: 'Premium πακέτο ρούχων',
+    description: 'Ντύσε τον χαρακτήρα σου με 3 νέα σύνολα.',
     cost: 400,
     category: 'digital',
     emoji: '👕',
@@ -75,8 +75,8 @@ export const gifts: Gift[] = [
   },
   {
     id: 'd6',
-    name: 'Exclusive Game Theme',
-    description: 'A brand-new look for Fruit Frenzy.',
+    name: 'Αποκλειστικό θέμα παιχνιδιού',
+    description: 'Μια ολοκαίνουργια εμφάνιση για τη Φρουτοτρέλα.',
     cost: 500,
     category: 'digital',
     emoji: '🎮',
@@ -88,8 +88,8 @@ export const gifts: Gift[] = [
   // ─── Physical — shipped, parent approval ───
   {
     id: 'p1',
-    name: 'Keanita Sticker Sheet',
-    description: 'A sheet of glossy mascot stickers.',
+    name: 'Αυτοκόλλητα Keanita',
+    description: 'Ένα φύλλο με γυαλιστερά αυτοκόλλητα της μασκότ.',
     cost: 800,
     category: 'physical',
     emoji: '✨',
@@ -100,8 +100,8 @@ export const gifts: Gift[] = [
   },
   {
     id: 'p2',
-    name: 'Keanita Colouring Book',
-    description: '32 pages of fruity colouring fun.',
+    name: 'Βιβλίο ζωγραφικής Keanita',
+    description: '32 σελίδες φρουτένιας ζωγραφικής διασκέδασης.',
     cost: 1200,
     category: 'physical',
     emoji: '🖍️',
@@ -112,8 +112,8 @@ export const gifts: Gift[] = [
   },
   {
     id: 'p3',
-    name: 'Pencil Case Set',
-    description: 'A branded pencil case + stationery.',
+    name: 'Σετ κασετίνας',
+    description: 'Μια κασετίνα Keanita + γραφική ύλη.',
     cost: 1800,
     category: 'physical',
     emoji: '✏️',
@@ -124,8 +124,8 @@ export const gifts: Gift[] = [
   },
   {
     id: 'p4',
-    name: 'Keanita Plush Toy',
-    description: 'A huggable Keanita mascot plush.',
+    name: 'Λούτρινη Keanita',
+    description: 'Μια αγκαλίτσα-μασκότ Keanita από λούτρινο.',
     cost: 3500,
     category: 'physical',
     emoji: '🧸',
@@ -136,8 +136,8 @@ export const gifts: Gift[] = [
   },
   {
     id: 'p5',
-    name: 'Keanita T-Shirt',
-    description: 'A soft cotton tee in your size.',
+    name: 'Μπλουζάκι Keanita',
+    description: 'Ένα απαλό βαμβακερό μπλουζάκι στο μέγεθός σου.',
     cost: 4000,
     category: 'physical',
     emoji: '👕',
@@ -148,8 +148,8 @@ export const gifts: Gift[] = [
   },
   {
     id: 'p6',
-    name: 'Keanita Backpack',
-    description: 'The flagship Kids Club backpack.',
+    name: 'Σακίδιο Keanita',
+    description: 'Το κορυφαίο σακίδιο του Kids Club.',
     cost: 6000,
     category: 'physical',
     emoji: '🎒',

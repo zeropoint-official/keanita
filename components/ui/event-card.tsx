@@ -14,9 +14,15 @@ function formatDate(dateStr: string) {
   const d = new Date(dateStr);
   return {
     day: d.getDate().toString(),
-    month: d.toLocaleString('en', { month: 'short' }).toUpperCase(),
+    month: d.toLocaleString('el', { month: 'short' }).toUpperCase().replace('.', ''),
   };
 }
+
+const TYPE_LABEL: Record<KeanitaEvent['type'], string> = {
+  event: 'Εκδήλωση',
+  seminar: 'Σεμινάριο',
+  announcement: 'Νέα',
+};
 
 export function EventCard({ event, onPress, variant = 'compact' }: Props) {
   const { day, month } = formatDate(event.date);
@@ -67,7 +73,7 @@ export function EventCard({ event, onPress, variant = 'compact' }: Props) {
                 paddingBottom: 5,
               }}
             >
-              <Text style={{ ...Fonts.bodyHeavy, color: '#FFFFFF', fontSize: 10, textTransform: 'capitalize' }}>{event.type}</Text>
+              <Text style={{ ...Fonts.bodyHeavy, color: '#FFFFFF', fontSize: 10 }}>{TYPE_LABEL[event.type]}</Text>
             </View>
           </View>
 

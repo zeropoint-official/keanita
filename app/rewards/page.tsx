@@ -19,10 +19,10 @@ const ICON_EMOJI: Record<KPIcon, string> = {
 };
 
 const EARN_WAYS = [
-  { emoji: '🎮', label: 'Play Fruit Frenzy', value: 'Up to 150 KP / day', bg: '#FFF0EE' },
-  { emoji: '☀️', label: 'Open the app daily', value: '5 KP + streak bonus', bg: '#FFF6E8' },
-  { emoji: '🎟️', label: 'RSVP & attend events', value: 'Up to 250 KP / event', bg: '#EEFBEE' },
-  { emoji: '📷', label: 'Scan product QR codes', value: '20 KP each', bg: '#EDF7FD' },
+  { emoji: '🎮', label: 'Παίξε Φρουτοτρέλα', value: 'Έως 150 KP / ημέρα', bg: '#FFF0EE' },
+  { emoji: '☀️', label: 'Άνοιγε την εφαρμογή καθημερινά', value: '5 KP + μπόνους σερί', bg: '#FFF6E8' },
+  { emoji: '🎟️', label: 'Δήλωσε συμμετοχή σε εκδηλώσεις', value: 'Έως 250 KP / εκδήλωση', bg: '#EEFBEE' },
+  { emoji: '📷', label: 'Σκάναρε QR κωδικούς προϊόντων', value: '20 KP το καθένα', bg: '#EDF7FD' },
 ];
 
 export default function RewardsScreen() {
@@ -38,10 +38,10 @@ export default function RewardsScreen() {
         end={{ x: 1, y: 1 }}
         style={{ borderBottomLeftRadius: 32, borderBottomRightRadius: 32, paddingBottom: 28 }}
       >
-        <ScreenHeader title="My Points" tint="#FFFFFF" transparent />
+        <ScreenHeader title="Οι πόντοι μου" tint="#FFFFFF" transparent />
 
         <View style={{ alignItems: 'center', marginTop: 8 }}>
-          <Text style={{ ...Fonts.bodyBold, color: 'rgba(255,255,255,0.8)', fontSize: 12, letterSpacing: 1.5 }}>YOUR BALANCE</Text>
+          <Text style={{ ...Fonts.bodyBold, color: 'rgba(255,255,255,0.8)', fontSize: 12, letterSpacing: 1.5 }}>ΤΟ ΥΠΟΛΟΙΠΟ ΣΟΥ</Text>
           <View style={{ flexDirection: 'row', alignItems: 'flex-end', marginTop: 4 }}>
             <Text style={{ ...Fonts.displayHeavy, color: '#FFFFFF', fontSize: 56, lineHeight: '60px' }}>{balance.toLocaleString()}</Text>
             <Text style={{ ...Fonts.bodyBold, color: 'rgba(255,255,255,0.8)', fontSize: 18, marginBottom: 10, marginLeft: 6 }}>KP</Text>
@@ -50,11 +50,11 @@ export default function RewardsScreen() {
           <View style={{ flexDirection: 'row', gap: 10, marginTop: 12 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: 999, paddingLeft: 14, paddingRight: 14, paddingTop: 6, paddingBottom: 6 }}>
               <Text style={{ fontSize: 14 }}>🔥</Text>
-              <Text style={{ ...Fonts.bodyBold, color: '#FFFFFF', fontSize: 12, marginLeft: 6 }}>{streak}-day streak</Text>
+              <Text style={{ ...Fonts.bodyBold, color: '#FFFFFF', fontSize: 12, marginLeft: 6 }}>{streak} ημέρες σερί</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: 999, paddingLeft: 14, paddingRight: 14, paddingTop: 6, paddingBottom: 6 }}>
               <Text style={{ fontSize: 14 }}>🏆</Text>
-              <Text style={{ ...Fonts.bodyBold, color: '#FFFFFF', fontSize: 12, marginLeft: 6 }}>{lifetimeEarned.toLocaleString()} earned</Text>
+              <Text style={{ ...Fonts.bodyBold, color: '#FFFFFF', fontSize: 12, marginLeft: 6 }}>{lifetimeEarned.toLocaleString()} συνολικά</Text>
             </View>
           </View>
         </View>
@@ -62,11 +62,11 @@ export default function RewardsScreen() {
 
       {/* Spend CTA */}
       <View style={{ marginLeft: 24, marginRight: 24, marginTop: 20 }}>
-        <PrimaryButton label="Spend points in the Gift Catalog" icon="gift.fill" color="#E84D3D" onPress={() => router.push('/gifts')} />
+        <PrimaryButton label="Ξόδεψε πόντους στον Κατάλογο δώρων" icon="gift.fill" color="#E84D3D" onPress={() => router.push('/gifts')} />
       </View>
 
       {/* Ways to earn */}
-      <Text style={{ ...Fonts.displayMedium, fontSize: 18, color: '#2D2D3A', marginLeft: 24, marginRight: 24, marginTop: 28, marginBottom: 12 }}>Ways to earn</Text>
+      <Text style={{ ...Fonts.displayMedium, fontSize: 18, color: '#2D2D3A', marginLeft: 24, marginRight: 24, marginTop: 28, marginBottom: 12 }}>Τρόποι να κερδίσεις</Text>
       <View style={{ marginLeft: 24, marginRight: 24 }}>
         {EARN_WAYS.map((w, i) => (
           <motion.div key={w.label} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.07, type: 'spring', stiffness: 120, damping: 16 }}>
@@ -84,7 +84,7 @@ export default function RewardsScreen() {
       </View>
 
       {/* Activity history */}
-      <Text style={{ ...Fonts.displayMedium, fontSize: 18, color: '#2D2D3A', marginLeft: 24, marginRight: 24, marginTop: 20, marginBottom: 12 }}>Recent activity</Text>
+      <Text style={{ ...Fonts.displayMedium, fontSize: 18, color: '#2D2D3A', marginLeft: 24, marginRight: 24, marginTop: 20, marginBottom: 12 }}>Πρόσφατη δραστηριότητα</Text>
       <View style={{ marginLeft: 24, marginRight: 24, backgroundColor: '#FFFFFF', borderRadius: 24, overflow: 'hidden', boxShadow: '0 2px 12px rgba(45,45,58,0.05)' }}>
         {history.map((entry, i) => {
           const earned = entry.amount > 0;
@@ -118,7 +118,7 @@ export default function RewardsScreen() {
       </View>
 
       <Text style={{ ...Fonts.body, fontSize: 12, color: '#B8B8C4', textAlign: 'center', marginTop: 20, paddingLeft: 40, paddingRight: 40, lineHeight: '16px' }}>
-        Points expire 12 months after they are earned. Redeeming gifts over 500 KP needs a parent&apos;s approval.
+        Οι πόντοι λήγουν 12 μήνες μετά την απόκτησή τους. Η εξαργύρωση δώρων άνω των 500 KP χρειάζεται έγκριση γονέα.
       </Text>
     </View>
   );

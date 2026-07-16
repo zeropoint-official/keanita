@@ -9,17 +9,22 @@ import { NavDrawer } from './nav-drawer';
 
 function greetingForNow() {
   const h = new Date().getHours();
-  if (h < 12) return 'Good morning ☀️';
-  if (h < 18) return 'Good afternoon 👋';
-  return 'Good evening 🌙';
+  if (h < 12) return 'Καλημέρα ☀️';
+  if (h < 18) return 'Καλό απόγευμα 👋';
+  return 'Καλησπέρα 🌙';
 }
 
+/**
+ * Minimal home header: mascot avatar (opens the menu), greeting, bell.
+ * Sits over the red hero backdrop, so the greeting is yellow and the
+ * title is white.
+ */
 export function HomeHeader() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   // Compute the time-of-day greeting on the client only, to avoid an
   // SSR/client hydration mismatch when the server clock differs.
-  const [greeting, setGreeting] = useState('Good day 👋');
+  const [greeting, setGreeting] = useState('Καλώς ήρθες 👋');
   useEffect(() => setGreeting(greetingForNow()), []);
 
   return (
@@ -35,7 +40,7 @@ export function HomeHeader() {
         }}
       >
         {/* Mascot avatar — opens the full menu */}
-        <AnimatedPress onPress={() => setMenuOpen(true)} accessibilityLabel="Open menu">
+        <AnimatedPress onPress={() => setMenuOpen(true)} accessibilityLabel="Άνοιγμα μενού">
           <View
             style={{
               width: 48,
@@ -56,16 +61,16 @@ export function HomeHeader() {
         </AnimatedPress>
 
         <View style={{ marginLeft: 12, flex: 1 }}>
-          <Text style={{ ...Fonts.bodyBold, fontSize: 12, color: '#8E8E9A' }}>
+          <Text style={{ ...Fonts.bodyHeavy, fontSize: 12, color: '#FFD84D' }}>
             {greeting}
           </Text>
-          <Text style={{ ...Fonts.display, fontSize: 20, color: '#2D2D3A', marginTop: -2 }}>
+          <Text style={{ ...Fonts.display, fontSize: 20, color: '#FFFFFF', marginTop: -2 }}>
             Keanita Kids Club
           </Text>
         </View>
 
         {/* Bell */}
-        <AnimatedPress onPress={() => router.push('/notifications')} accessibilityLabel="Notifications">
+        <AnimatedPress onPress={() => router.push('/notifications')} accessibilityLabel="Ειδοποιήσεις">
           <View
             style={{
               width: 48,
@@ -87,7 +92,7 @@ export function HomeHeader() {
                 width: 9,
                 height: 9,
                 borderRadius: 5,
-                backgroundColor: '#E84D3D',
+                backgroundColor: '#E60C10',
                 border: '2px solid #FFFFFF',
               }}
             />

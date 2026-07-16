@@ -17,7 +17,7 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   title: 'Keanita Kids Club',
-  description: 'Tasty, healthy goodness for kids — since 1981',
+  description: 'Νόστιμες, υγιεινές λιχουδιές για παιδιά — από το 1981',
 };
 
 export const viewport: Viewport = {

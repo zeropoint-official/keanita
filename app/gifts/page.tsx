@@ -15,6 +15,12 @@ const CARD_W = 'calc((min(100vw, 430px) - 60px) / 2)';
 const FILTERS = ['All', 'Digital', 'Physical'] as const;
 type Filter = (typeof FILTERS)[number];
 
+const FILTER_LABELS: Record<Filter, string> = {
+  All: 'Όλα',
+  Digital: 'Ψηφιακά',
+  Physical: 'Φυσικά',
+};
+
 function GiftCard({ gift, onPress }: { gift: Gift; onPress: () => void }) {
   return (
     <AnimatedPress onPress={onPress} style={{ width: CARD_W, marginBottom: 12 }}>
@@ -23,7 +29,7 @@ function GiftCard({ gift, onPress }: { gift: Gift; onPress: () => void }) {
           <Text style={{ fontSize: 46, opacity: gift.inStock ? 1 : 0.4 }}>{gift.emoji}</Text>
           {!gift.inStock && (
             <View style={{ position: 'absolute', top: 10, right: 10, backgroundColor: 'rgba(45,45,58,0.7)', borderRadius: 999, paddingLeft: 10, paddingRight: 10, paddingTop: 4, paddingBottom: 4 }}>
-              <Text style={{ ...Fonts.bodyBold, color: '#FFFFFF', fontSize: 9 }}>Back soon</Text>
+              <Text style={{ ...Fonts.bodyBold, color: '#FFFFFF', fontSize: 9 }}>Σύντομα ξανά</Text>
             </View>
           )}
         </View>
@@ -34,7 +40,7 @@ function GiftCard({ gift, onPress }: { gift: Gift; onPress: () => void }) {
               <Text style={{ fontSize: 12 }}>⭐</Text>
               <Text style={{ ...Fonts.bodyHeavy, fontSize: 14, color: gift.color }}>{gift.cost.toLocaleString()}</Text>
             </View>
-            {gift.requiresApproval && <Text style={{ ...Fonts.bodyBold, fontSize: 9, color: '#B8B8C4' }}>PARENT OK</Text>}
+            {gift.requiresApproval && <Text style={{ ...Fonts.bodyBold, fontSize: 9, color: '#B8B8C4' }}>ΓΟΝΕΑΣ</Text>}
           </View>
         </View>
       </View>
@@ -60,7 +66,7 @@ export default function GiftsScreen() {
 
   const handleRedeem = () => {
     if (!selected) return;
-    const ok = spend(selected.cost, `Redeemed: ${selected.name}`);
+    const ok = spend(selected.cost, `Εξαργύρωση: ${selected.name}`);
     if (ok) setRedeemed(true);
   };
 
@@ -68,7 +74,7 @@ export default function GiftsScreen() {
 
   return (
     <View style={{ backgroundColor: '#FAFAF7', minHeight: '100dvh' }}>
-      <ScreenHeader title="Gift Catalog" subtitle="Turn your points into gifts" right={<KpPill amount={balance} size="sm" />} />
+      <ScreenHeader title="Κατάλογος δώρων" subtitle="Μετέτρεψε τους πόντους σου σε δώρα" right={<KpPill amount={balance} size="sm" />} />
 
       {/* Filters */}
       <View style={{ flexDirection: 'row', paddingLeft: 24, paddingRight: 24, gap: 8, marginBottom: 4 }}>
@@ -77,7 +83,7 @@ export default function GiftsScreen() {
           return (
             <Pressable key={f} onPress={() => setFilter(f)}>
               <View style={{ paddingLeft: 18, paddingRight: 18, paddingTop: 8, paddingBottom: 8, borderRadius: 12, backgroundColor: active ? '#E84D3D' : '#FFFFFF', border: active ? 'none' : '1px solid #F0F0EC' }}>
-                <Text style={{ ...Fonts.body, fontSize: 14, color: active ? '#FFFFFF' : '#8E8E9A' }}>{f}</Text>
+                <Text style={{ ...Fonts.body, fontSize: 14, color: active ? '#FFFFFF' : '#8E8E9A' }}>{FILTER_LABELS[f]}</Text>
               </View>
             </Pressable>
           );
@@ -111,15 +117,15 @@ export default function GiftsScreen() {
                     <Text style={{ fontSize: 44 }}>🎉</Text>
                   </View>
                   <Text style={{ ...Fonts.displayHeavy, fontSize: 20, color: '#2D2D3A', marginTop: 16 }}>
-                    {selected.category === 'physical' ? 'Sent for approval!' : 'Gift unlocked!'}
+                    {selected.category === 'physical' ? 'Στάλθηκε για έγκριση!' : 'Το δώρο ξεκλειδώθηκε!'}
                   </Text>
                   <Text style={{ ...Fonts.body, fontSize: 14, color: '#8E8E9A', textAlign: 'center', marginTop: 6, lineHeight: '20px' }}>
                     {selected.category === 'physical'
-                      ? `A request for your ${selected.name} was sent to your parent. You'll be notified once it's approved.`
-                      : `Your ${selected.name} has been added to your account. Enjoy!`}
+                      ? `Το αίτημα για «${selected.name}» στάλθηκε στον γονέα σου. Θα ειδοποιηθείς μόλις εγκριθεί.`
+                      : `Το «${selected.name}» προστέθηκε στον λογαριασμό σου. Καλή διασκέδαση!`}
                   </Text>
                   <View style={{ width: '100%', marginTop: 20 }}>
-                    <PrimaryButton label="Done" onPress={closeSheet} />
+                    <PrimaryButton label="Έτοιμο" onPress={closeSheet} />
                   </View>
                 </View>
               ) : (
@@ -133,22 +139,22 @@ export default function GiftsScreen() {
                   </View>
 
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#FAFAF7', borderRadius: 16, paddingLeft: 16, paddingRight: 16, paddingTop: 12, paddingBottom: 12, marginTop: 20 }}>
-                    <Text style={{ ...Fonts.body, fontSize: 14, color: '#8E8E9A' }}>Cost</Text>
+                    <Text style={{ ...Fonts.body, fontSize: 14, color: '#8E8E9A' }}>Κόστος</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                       <Text style={{ fontSize: 14 }}>⭐</Text>
                       <Text style={{ ...Fonts.displayHeavy, fontSize: 16, color: '#2D2D3A' }}>{selected.cost.toLocaleString()} KP</Text>
                     </View>
                   </View>
                   <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft: 16, paddingRight: 16, marginTop: 10 }}>
-                    <Text style={{ ...Fonts.body, fontSize: 12, color: '#B8B8C4' }}>Your balance after</Text>
+                    <Text style={{ ...Fonts.body, fontSize: 12, color: '#B8B8C4' }}>Υπόλοιπο μετά</Text>
                     <Text style={{ ...Fonts.bodyBold, fontSize: 12, color: canAfford ? '#6BBF6A' : '#E84D3D' }}>
-                      {canAfford ? (balance - selected.cost).toLocaleString() + ' KP' : 'Not enough KP'}
+                      {canAfford ? (balance - selected.cost).toLocaleString() + ' KP' : 'Δεν φτάνουν οι πόντοι'}
                     </Text>
                   </View>
 
                   {selected.requiresApproval && (
                     <Text style={{ ...Fonts.body, fontSize: 12, color: '#B8B8C4', textAlign: 'center', marginTop: 12, paddingLeft: 8, paddingRight: 8, lineHeight: '16px' }}>
-                      🛡️ This gift needs a parent&apos;s approval before it&apos;s sent.
+                      🛡️ Αυτό το δώρο χρειάζεται έγκριση γονέα πριν σταλεί.
                     </Text>
                   )}
 
@@ -156,12 +162,12 @@ export default function GiftsScreen() {
                     <PrimaryButton
                       label={
                         !selected.inStock
-                          ? 'Out of stock'
+                          ? 'Εξαντλήθηκε'
                           : !canAfford
-                            ? `Need ${(selected.cost - balance).toLocaleString()} more KP`
+                            ? `Χρειάζεσαι ${(selected.cost - balance).toLocaleString()} ακόμα KP`
                             : selected.requiresApproval
-                              ? 'Request from parent'
-                              : 'Redeem now'
+                              ? 'Ζήτα το από τον γονέα'
+                              : 'Εξαργύρωση τώρα'
                       }
                       color={selected.color}
                       disabled={!canAfford || !selected.inStock}
@@ -169,7 +175,7 @@ export default function GiftsScreen() {
                     />
                   </View>
                   <Pressable onPress={closeSheet} style={{ alignItems: 'center', paddingTop: 12, paddingBottom: 12, marginTop: 4 }}>
-                    <Text style={{ ...Fonts.body, fontSize: 14, color: '#B8B8C4' }}>Maybe later</Text>
+                    <Text style={{ ...Fonts.body, fontSize: 14, color: '#B8B8C4' }}>Ίσως αργότερα</Text>
                   </Pressable>
                 </View>
               )}

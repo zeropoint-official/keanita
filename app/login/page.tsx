@@ -38,7 +38,7 @@ export default function LoginScreen() {
 
   const onSubmit = async () => {
     if (!email.trim() || !password) {
-      setError('Please enter your email and password.');
+      setError('Συμπλήρωσε το email και τον κωδικό σου.');
       return;
     }
     setError(null);
@@ -67,10 +67,10 @@ export default function LoginScreen() {
       >
         <Img src="/images/brand/mascot.png" style={{ width: 96, height: 96 }} contentFit="contain" />
         <Text style={{ ...Fonts.displayHeavy, color: '#FFFFFF', fontSize: 30, marginTop: 12 }}>
-          Welcome back!
+          Καλώς όρισες ξανά!
         </Text>
         <Text style={{ ...Fonts.body, color: 'rgba(255,255,255,0.8)', fontSize: 14, marginTop: 4 }}>
-          Log in to your Keanita Kids Club
+          Συνδέσου στο Keanita Kids Club
         </Text>
       </LinearGradient>
 
@@ -98,13 +98,13 @@ export default function LoginScreen() {
           style={inputStyle}
         />
 
-        <Text style={{ ...labelStyle, marginTop: 16 }}>PASSWORD</Text>
+        <Text style={{ ...labelStyle, marginTop: 16 }}>ΚΩΔΙΚΟΣ</Text>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && onSubmit()}
-          placeholder="Your password"
+          placeholder="Ο κωδικός σου"
           autoComplete="current-password"
           disabled={loading}
           style={inputStyle}
@@ -124,14 +124,14 @@ export default function LoginScreen() {
             style={{ borderRadius: 16, paddingTop: 16, paddingBottom: 16, alignItems: 'center' }}
           >
             <Text style={{ ...Fonts.bodyBold, color: '#FFFFFF', fontSize: 16 }}>
-              {loading ? 'Logging in…' : 'Log In'}
+              {loading ? 'Σύνδεση…' : 'Σύνδεση'}
             </Text>
           </LinearGradient>
         </AnimatedPress>
       </View>
 
       <Text style={{ ...Fonts.body, textAlign: 'center', color: '#B8B8C4', fontSize: 12, marginTop: 24, paddingLeft: 40, paddingRight: 40 }}>
-        Use the same email and password from the old Keanita app.
+        Χρησιμοποίησε το ίδιο email και κωδικό από την παλιά εφαρμογή Keanita.
       </Text>
     </View>
   );

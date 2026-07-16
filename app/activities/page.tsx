@@ -1,4 +1,4 @@
 import { ComingSoon } from '@/components/ui/coming-soon';
 export default function Page() {
-  return <ComingSoon title="Επεξεργασία προφίλ" />;
+  return <ComingSoon title="Puzzles & Δραστηριότητες" />;
 }

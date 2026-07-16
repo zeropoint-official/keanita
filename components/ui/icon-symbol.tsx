@@ -45,6 +45,7 @@ import {
   MdConfirmationNumber,
   MdInfo,
   MdThumbUp,
+  MdPercent,
 } from 'react-icons/md';
 import type { IconType } from 'react-icons';
 
@@ -89,6 +90,7 @@ const MAPPING = {
   'ticket.fill': MdConfirmationNumber,
   'info.circle.fill': MdInfo,
   'hand.thumbsup.fill': MdThumbUp,
+  percent: MdPercent,
 } satisfies Record<string, IconType>;
 
 export type IconSymbolName = keyof typeof MAPPING;

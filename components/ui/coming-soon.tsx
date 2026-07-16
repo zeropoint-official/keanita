@@ -23,9 +23,9 @@ export function ComingSoon({ title, tab = false }: { title: string; tab?: boolea
 
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingTop: 120, gap: 10 }}>
         <Text style={{ fontSize: 44 }}>🚧</Text>
-        <Text style={{ ...Fonts.display, fontSize: 18, color: '#2D2D3A' }}>Coming soon</Text>
+        <Text style={{ ...Fonts.display, fontSize: 18, color: '#2D2D3A' }}>Έρχεται σύντομα</Text>
         <Text style={{ ...Fonts.body, fontSize: 13, color: '#8E8E9A', textAlign: 'center' }}>
-          This screen is being ported from the app.
+          Αυτή η οθόνη ετοιμάζεται.
         </Text>
       </View>
     </View>

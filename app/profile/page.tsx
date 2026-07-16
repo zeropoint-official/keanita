@@ -7,7 +7,7 @@ import { IconSymbol, type IconSymbolName } from '@/components/ui/icon-symbol';
 import { useRewards } from '@/contexts/rewards';
 
 const MOCK_USER = {
-  displayName: 'Maria Papadopoulou',
+  displayName: 'Μαρία Παπαδοπούλου',
   email: 'maria@example.com',
 };
 
@@ -21,12 +21,12 @@ interface MenuItem {
 }
 
 const MENU_ITEMS: MenuItem[] = [
-  { icon: 'bell.fill', label: 'Notifications', subtitle: '3 new', color: '#E84D3D', bg: '#FFF0EE', href: '/notifications' },
-  { icon: 'pencil', label: 'Edit Profile', subtitle: 'Name, phone, email', color: '#5DADE2', bg: '#EDF7FD', href: '/edit-profile' },
-  { icon: 'gift.fill', label: 'Gift Catalog', subtitle: 'Redeem your points', color: '#FBBF24', bg: '#FFFBEB', href: '/gifts' },
-  { icon: 'person.2.fill', label: 'My Kids', subtitle: 'Manage children', color: '#6BBF6A', bg: '#EEFBEE', href: '/edit-profile' },
-  { icon: 'lock.fill', label: 'Change Password', subtitle: 'Security settings', color: '#9B7FD4', bg: '#F4F0FA' },
-  { icon: 'phone.fill', label: 'Contact Us', subtitle: 'Get in touch', color: '#F5A623', bg: '#FFF6E8' },
+  { icon: 'bell.fill', label: 'Ειδοποιήσεις', subtitle: '3 νέες', color: '#E84D3D', bg: '#FFF0EE', href: '/notifications' },
+  { icon: 'pencil', label: 'Επεξεργασία προφίλ', subtitle: 'Όνομα, τηλέφωνο, email', color: '#5DADE2', bg: '#EDF7FD', href: '/edit-profile' },
+  { icon: 'gift.fill', label: 'Κατάλογος δώρων', subtitle: 'Εξαργύρωσε τους πόντους σου', color: '#FBBF24', bg: '#FFFBEB', href: '/gifts' },
+  { icon: 'person.2.fill', label: 'Τα παιδιά μου', subtitle: 'Διαχείριση παιδιών', color: '#6BBF6A', bg: '#EEFBEE', href: '/edit-profile' },
+  { icon: 'lock.fill', label: 'Αλλαγή κωδικού', subtitle: 'Ρυθμίσεις ασφαλείας', color: '#9B7FD4', bg: '#F4F0FA' },
+  { icon: 'phone.fill', label: 'Επικοινωνία', subtitle: 'Έλα σε επαφή μαζί μας', color: '#F5A623', bg: '#FFF6E8' },
 ];
 
 export default function ProfileScreen() {
@@ -43,7 +43,7 @@ export default function ProfileScreen() {
         end={{ x: 1, y: 1 }}
         style={{ paddingTop: 32, paddingBottom: 60, paddingLeft: 24, paddingRight: 24, borderBottomLeftRadius: 28, borderBottomRightRadius: 28 }}
       >
-        <Text style={{ ...Fonts.displayHeavy, color: '#FFFFFF', fontSize: 24 }}>My Profile</Text>
+        <Text style={{ ...Fonts.displayHeavy, color: '#FFFFFF', fontSize: 24 }}>Το προφίλ μου</Text>
 
         {/* Profile info */}
         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20 }}>
@@ -55,7 +55,7 @@ export default function ProfileScreen() {
             <Text style={{ ...Fonts.body, color: 'rgba(255,255,255,0.6)', fontSize: 14 }}>{email}</Text>
           </View>
           <View style={{ backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: 999, paddingLeft: 12, paddingRight: 12, paddingTop: 6, paddingBottom: 6 }}>
-            <Text style={{ ...Fonts.bodySemiBold, color: '#FFFFFF', fontSize: 12 }}>Gold Member</Text>
+            <Text style={{ ...Fonts.bodySemiBold, color: '#FFFFFF', fontSize: 12 }}>Μέλος Keanita</Text>
           </View>
         </View>
       </LinearGradient>
@@ -70,10 +70,10 @@ export default function ProfileScreen() {
             style={{ borderRadius: 24, padding: 18, boxShadow: '0 6px 14px rgba(245,166,35,0.25)' }}
           >
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-              <Text style={{ ...Fonts.bodyBold, color: 'rgba(255,255,255,0.85)', fontSize: 12, letterSpacing: 1.5 }}>KEANITA POINTS</Text>
+              <Text style={{ ...Fonts.bodyBold, color: 'rgba(255,255,255,0.85)', fontSize: 12, letterSpacing: 1.5 }}>ΠΟΝΤΟΙ KEANITA</Text>
               <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.25)', borderRadius: 999, paddingLeft: 10, paddingRight: 10, paddingTop: 4, paddingBottom: 4 }}>
                 <Text style={{ fontSize: 11 }}>🔥</Text>
-                <Text style={{ ...Fonts.bodyBold, color: '#FFFFFF', fontSize: 11, marginLeft: 4 }}>{streak}-day streak</Text>
+                <Text style={{ ...Fonts.bodyBold, color: '#FFFFFF', fontSize: 11, marginLeft: 4 }}>{streak} ημέρες σερί</Text>
               </View>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'flex-end', marginTop: 6 }}>
@@ -81,9 +81,9 @@ export default function ProfileScreen() {
               <Text style={{ ...Fonts.bodyBold, color: 'rgba(255,255,255,0.8)', fontSize: 16, marginBottom: 6, marginLeft: 6 }}>KP</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 8 }}>
-              <Text style={{ ...Fonts.body, color: 'rgba(255,255,255,0.8)', fontSize: 12 }}>🏆 {lifetimeEarned.toLocaleString()} KP earned all-time</Text>
+              <Text style={{ ...Fonts.body, color: 'rgba(255,255,255,0.8)', fontSize: 12 }}>🏆 {lifetimeEarned.toLocaleString()} KP συνολικά</Text>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Text style={{ ...Fonts.bodyBold, color: '#FFFFFF', fontSize: 12 }}>View rewards</Text>
+                <Text style={{ ...Fonts.bodyBold, color: '#FFFFFF', fontSize: 12 }}>Δες ανταμοιβές</Text>
                 <IconSymbol name="chevron.right" size={14} color="#FFFFFF" />
               </View>
             </View>
@@ -97,7 +97,7 @@ export default function ProfileScreen() {
           <View style={{ borderRadius: 16, overflow: 'hidden', position: 'relative', boxShadow: '0 4px 12px rgba(232,77,61,0.2)' }}>
             <Img src="/images/brand/membership-card.png" style={{ width: '100%', height: 180 }} contentFit="cover" />
             <View style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 16 }}>
-              <Text style={{ ...Fonts.bodyBold, color: '#FFFFFF', fontSize: 12, textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>MEMBER SINCE 2024</Text>
+              <Text style={{ ...Fonts.bodyBold, color: '#FFFFFF', fontSize: 12, textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>ΜΕΛΟΣ ΑΠΟ ΤΟ 2024</Text>
             </View>
           </View>
         </AnimatedPress>
@@ -105,7 +105,7 @@ export default function ProfileScreen() {
 
       {/* Menu */}
       <View style={{ marginLeft: 24, marginRight: 24, marginTop: 24 }}>
-        <Text style={{ ...Fonts.displayMedium, fontSize: 18, color: '#2D2D3A', marginBottom: 12 }}>Settings</Text>
+        <Text style={{ ...Fonts.displayMedium, fontSize: 18, color: '#2D2D3A', marginBottom: 12 }}>Ρυθμίσεις</Text>
         <View style={{ backgroundColor: '#FFFFFF', borderRadius: 24, overflow: 'hidden', boxShadow: '0 2px 12px rgba(45,45,58,0.05)' }}>
           {MENU_ITEMS.map((item, index) => (
             <AnimatedPress
@@ -138,7 +138,7 @@ export default function ProfileScreen() {
       <View style={{ marginLeft: 24, marginRight: 24, marginTop: 20 }}>
         <AnimatedPress onPress={() => router.push('/login')}>
           <View style={{ alignItems: 'center', paddingTop: 14, paddingBottom: 14, backgroundColor: '#FFF0EE', borderRadius: 16 }}>
-            <Text style={{ ...Fonts.bodySemiBold, color: '#E84D3D', fontSize: 14 }}>Log Out</Text>
+            <Text style={{ ...Fonts.bodySemiBold, color: '#E84D3D', fontSize: 14 }}>Αποσύνδεση</Text>
           </View>
         </AnimatedPress>
       </View>

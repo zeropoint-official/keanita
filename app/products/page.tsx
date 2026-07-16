@@ -8,8 +8,13 @@ import { Fonts } from '@/constants/fonts';
 import { AppHeader } from '@/components/ui/app-header';
 import { products, type Product } from '@/data/mock/products';
 
-const FILTERS = ['All', 'Juices', 'Yogurt'] as const;
+const FILTERS = ['Όλα', 'Χυμοί', 'Γιαούρτια'] as const;
 type Filter = (typeof FILTERS)[number];
+
+const CATEGORY_LABEL: Record<Product['category'], string> = {
+  juice: 'Χυμός',
+  yogurt: 'Γιαούρτι',
+};
 
 function FilterChip({ label, isActive, onPress }: { label: string; isActive: boolean; onPress: () => void }) {
   return (
@@ -33,13 +38,13 @@ function ProductTile({ product, index }: { product: Product; index: number }) {
       <AnimatedPress onPress={() => router.push(`/product/${product.id}`)} style={{ flex: 1 }}>
         <View style={{ backgroundColor: product.bgColor, borderRadius: 24, padding: 16 }}>
           <View style={{ alignSelf: 'flex-start', borderRadius: 999, paddingLeft: 10, paddingRight: 10, paddingTop: 4, paddingBottom: 4, backgroundColor: product.accentColor + '22' }}>
-            <Text style={{ ...Fonts.bodyHeavy, fontSize: 9, textTransform: 'capitalize', letterSpacing: 1, color: product.accentColor }}>{product.category}</Text>
+            <Text style={{ ...Fonts.bodyHeavy, fontSize: 9, letterSpacing: 1, color: product.accentColor }}>{CATEGORY_LABEL[product.category]}</Text>
           </View>
           <Img src={product.image} style={{ width: '100%', height: 130, marginTop: 6 }} contentFit="contain" />
           <Text numberOfLines={1} style={{ ...Fonts.bodyBold, fontSize: 14, color: '#2D2D3A', marginTop: 8 }}>{product.name}</Text>
           <Text numberOfLines={2} style={{ ...Fonts.body, fontSize: 11, color: '#8E8E9A', marginTop: 2 }}>{product.tagline}</Text>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 12, borderRadius: 12, paddingLeft: 10, paddingRight: 10, paddingTop: 6, paddingBottom: 6, backgroundColor: 'rgba(255,255,255,0.65)' }}>
-            <Text style={{ ...Fonts.bodySemiBold, fontSize: 10, color: '#B8B8C4' }}>Energy</Text>
+            <Text style={{ ...Fonts.bodySemiBold, fontSize: 10, color: '#B8B8C4' }}>Ενέργεια</Text>
             <Text style={{ ...Fonts.bodyHeavy, fontSize: 11, color: product.accentColor }}>{product.nutrition[0]?.value.split(' / ')[1] ?? '—'}</Text>
           </View>
         </View>
@@ -49,11 +54,11 @@ function ProductTile({ product, index }: { product: Product; index: number }) {
 }
 
 export default function ProductsScreen() {
-  const [filter, setFilter] = useState<Filter>('All');
+  const [filter, setFilter] = useState<Filter>('Όλα');
 
   const filtered = useMemo(() => {
-    if (filter === 'All') return products;
-    if (filter === 'Juices') return products.filter((p) => p.category === 'juice');
+    if (filter === 'Όλα') return products;
+    if (filter === 'Χυμοί') return products.filter((p) => p.category === 'juice');
     return products.filter((p) => p.category === 'yogurt');
   }, [filter]);
 
@@ -64,11 +69,11 @@ export default function ProductsScreen() {
     <View style={{ backgroundColor: '#FAFAF7', minHeight: '100dvh', paddingBottom: 96 }}>
       {/* Hero */}
       <LinearGradient colors={['#F5A623', '#FBBF24']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderBottomLeftRadius: 28, borderBottomRightRadius: 28 }}>
-        <AppHeader transparent tint="light" title="Products" showBrand={false} />
+        <AppHeader transparent tint="light" title="Προϊόντα" showBrand={false} />
         <View style={{ paddingLeft: 24, paddingRight: 24, paddingBottom: 28, paddingTop: 4 }}>
-          <Text style={{ ...Fonts.displayHeavy, color: '#FFFFFF', fontSize: 24 }}>Our Products</Text>
+          <Text style={{ ...Fonts.displayHeavy, color: '#FFFFFF', fontSize: 24 }}>Τα προϊόντα μας</Text>
           <Text style={{ ...Fonts.bodySemiBold, color: 'rgba(255,255,255,0.8)', fontSize: 14, marginTop: 4, lineHeight: '20px' }}>
-            Tasty juices and creamy yogurts — made with love for kids.
+            Νόστιμοι χυμοί και βελούδινα γιαούρτια — φτιαγμένα με αγάπη για παιδιά.
           </Text>
         </View>
       </LinearGradient>
@@ -92,7 +97,7 @@ export default function ProductsScreen() {
         ))}
         {filtered.length === 0 ? (
           <View style={{ alignItems: 'center', paddingTop: 64, paddingBottom: 64 }}>
-            <Text style={{ ...Fonts.body, color: '#B8B8C4', fontSize: 14 }}>No products in this category.</Text>
+            <Text style={{ ...Fonts.body, color: '#B8B8C4', fontSize: 14 }}>Δεν υπάρχουν προϊόντα σε αυτή την κατηγορία.</Text>
           </View>
         ) : null}
       </View>
@@ -100,12 +105,12 @@ export default function ProductsScreen() {
       {/* Why Keanita strip */}
       <View style={{ marginLeft: 24, marginRight: 24, marginTop: 12 }}>
         <View style={{ backgroundColor: '#FFFFFF', borderRadius: 24, padding: 20, boxShadow: '0 2px 12px rgba(45,45,58,0.06)' }}>
-          <Text style={{ ...Fonts.bodyBold, fontSize: 16, color: '#2D2D3A' }}>Why Keanita?</Text>
+          <Text style={{ ...Fonts.bodyBold, fontSize: 16, color: '#2D2D3A' }}>Γιατί Keanita;</Text>
           <Text style={{ ...Fonts.body, fontSize: 12, color: '#8E8E9A', marginTop: 4, lineHeight: '20px' }}>
-            20% real juice, extra Vitamin C, no preservatives — designed for active kids and approved by parents.
+            20% φυσικός χυμός, έξτρα βιταμίνη C, χωρίς συντηρητικά — σχεδιασμένα για δραστήρια παιδιά και εγκεκριμένα από γονείς.
           </Text>
           <View style={{ flexDirection: 'row', gap: 8, marginTop: 12 }}>
-            {['20% Juice', 'Vitamin C', 'No Additives'].map((tag) => (
+            {['20% Χυμός', 'Βιταμίνη C', 'Χωρίς πρόσθετα'].map((tag) => (
               <View key={tag} style={{ borderRadius: 999, paddingLeft: 12, paddingRight: 12, paddingTop: 6, paddingBottom: 6, backgroundColor: '#FFF6E8' }}>
                 <Text style={{ ...Fonts.bodyBold, fontSize: 10, color: '#F5A623' }}>{tag}</Text>
               </View>
