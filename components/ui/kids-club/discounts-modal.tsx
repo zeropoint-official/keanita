@@ -18,9 +18,16 @@ function StoreCard({ store, onPress }: { store: PartnerStore; onPress: () => voi
   return (
     <AnimatedPress onPress={onPress}>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', backgroundColor: '#FFFFFF', border: '1px solid #F0F0EC', borderRadius: 16, padding: 12, marginBottom: 8 }}>
-        <div style={{ width: 50, height: 50, borderRadius: 14, backgroundColor: '#FFF6E8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-          <span style={{ color: '#F5A623', fontSize: 14, fontWeight: 900 }}>{maxDiscount}%</span>
-        </div>
+        {store.logo ? (
+          <div style={{ width: 50, height: 50, borderRadius: 14, backgroundColor: '#FFFFFF', border: '1px solid #F0F0EC', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden' }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={store.logo} alt={store.name} style={{ width: 40, height: 40, objectFit: 'contain' }} />
+          </div>
+        ) : (
+          <div style={{ width: 50, height: 50, borderRadius: 14, backgroundColor: '#FFF6E8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <span style={{ color: '#F5A623', fontSize: 14, fontWeight: 900 }}>{maxDiscount}%</span>
+          </div>
+        )}
         <div style={{ flex: 1, marginLeft: 12, marginRight: 6, minWidth: 0, display: 'flex', flexDirection: 'column' }}>
           <span style={{ fontSize: 13.5, fontWeight: 800, color: '#2D2D3A', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{store.name}</span>
           <span style={{ fontSize: 11, color: '#8E8E9A', marginTop: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import { View, Text, AnimatedPress } from '@/lib/rn';
+import { View, Text, Img, AnimatedPress } from '@/lib/rn';
 import { Fonts } from '@/constants/fonts';
 import { ScreenHeader } from '@/components/ui/screen-header';
 import { IconSymbol } from '@/components/ui/icon-symbol';
@@ -11,6 +11,25 @@ import { partnerStores, storeCategories, type PartnerStore } from '@/data/mock/k
 const ALL = 0;
 
 function StoreLogo({ store, size = 56 }: { store: PartnerStore; size?: number }) {
+  if (store.logo) {
+    return (
+      <View
+        style={{
+          width: size,
+          height: size,
+          borderRadius: 14,
+          backgroundColor: '#FFFFFF',
+          border: '1px solid #F0F0EC',
+          alignItems: 'center',
+          justifyContent: 'center',
+          overflow: 'hidden',
+          flexShrink: 0,
+        }}
+      >
+        <Img src={store.logo} style={{ width: size - 10, height: size - 10 }} contentFit="contain" />
+      </View>
+    );
+  }
   const maxDiscount = Math.max(...store.discounts.map((d) => d.value));
   return (
     <View style={{ width: size, height: size, borderRadius: 14, backgroundColor: '#FFF0E0', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>

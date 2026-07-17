@@ -79,10 +79,12 @@ export interface PartnerStore {
   phone?: string;
   description?: string;
   website?: string;
+  /** Brand logo (public/ path); most stores are .jpg, 46 & 49 are .png. */
+  logo?: string;
   discounts: { value: number; description: string }[];
 }
 
-export const partnerStores: PartnerStore[] = [
+const basePartnerStores: PartnerStore[] = [
   { id: 1, name: 'Paperworks Philippides', categoryId: 6, phone: '22879222', description: 'Εξαιρούνται τα οπτικά είδη', discounts: [{ value: 15, description: 'Έκπτωση' }] },
   { id: 2, name: 'ΑΘΛΟΚΙΝΗΣΗ', categoryId: 4, phone: '25822414', discounts: [{ value: 15, description: 'Έκπτωση' }] },
   { id: 4, name: 'Okaidi', categoryId: 3, phone: '23740835', description: 'Παιδικά είδη ένδυσης υπόδησης', discounts: [{ value: 15, description: 'Έκπτωση' }] },
@@ -124,3 +126,12 @@ export const partnerStores: PartnerStore[] = [
   { id: 48, name: 'LE TRONE NOIR', categoryId: 3, discounts: [{ value: 15, description: 'Πλήρες πακέτο βάπτισης' }, { value: 10, description: 'Ρούχα / παπούτσια' }] },
   { id: 49, name: 'SAKURA by Loizos Loizou / Flower Shop', categoryId: 13, discounts: [{ value: 15, description: 'Στο κατάστημα' }, { value: 15, description: 'Online — κωδικός KEAN15' }] },
 ];
+
+// Logos from the old app backend (`media` table). 46 & 49 are .png, the rest .jpg.
+const PNG_LOGOS = new Set([46, 49]);
+const storeLogo = (id: number) => `/images/stores/store-${id}.${PNG_LOGOS.has(id) ? 'png' : 'jpg'}`;
+
+export const partnerStores: PartnerStore[] = basePartnerStores.map((s) => ({
+  ...s,
+  logo: storeLogo(s.id),
+}));
