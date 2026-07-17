@@ -46,6 +46,8 @@ import {
   MdInfo,
   MdThumbUp,
   MdPercent,
+  MdExtension,
+  MdArrowCircleDown,
 } from 'react-icons/md';
 import type { IconType } from 'react-icons';
 
@@ -91,6 +93,8 @@ const MAPPING = {
   'info.circle.fill': MdInfo,
   'hand.thumbsup.fill': MdThumbUp,
   percent: MdPercent,
+  'puzzlepiece.fill': MdExtension,
+  'arrow.down.circle.fill': MdArrowCircleDown,
 } satisfies Record<string, IconType>;
 
 export type IconSymbolName = keyof typeof MAPPING;
